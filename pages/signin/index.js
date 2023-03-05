@@ -24,12 +24,11 @@ const SignIn = () => {
 
                 {/*Sign In Form*/}
                 <div className={'col-span-12 md:col-span-6'}>
-                    <div className={'h-full w-full laptop:pl-8 px-4 my-14'}>
+                    <div className={'h-full w-full laptop:pl-8 px-4 my-8 tablet:my-14'}>
                         <div className={'bg-skin-theme-body-50 rounded-lg shadow flex flex-col justify-start py-6 px-8 gap-5'}>
                             <h2 className={'text-2xl font-bold text-skin-theme-font-100'}>Welcome back</h2>
                             {/* Google and Apple Sign In Buttons*/}
-                            <div
-                                className={'flex flex-row justify-between text-[0.7rem] basePhone:text-xs tablet:sm font-semibold gap-4'}>
+                            <div className={'flex flex-row justify-between text-[0.7rem] basePhone:text-xs tablet:sm font-semibold gap-4'}>
                                 <button
                                     className={'rounded-lg w-full py-3 bg-skin-theme-body-900 ring-1 ring-skin-theme-body-50 text-skin-theme-font-900'}>Log
                                     in with Google
@@ -55,7 +54,7 @@ const SignIn = () => {
                                     <input type="password" placeholder={'Password'}
                                            className={'px-3 w-full h-10 rounded-lg border border-skin-theme-body-300 bg-skin-theme-body-100 focus:outline-none'}/>
 
-                                    <div className={'flex flex-row justify-between text-sm text-skin-theme-font-400'}>
+                                    <div className={'flex flex-row justify-between text-xs lgPhone:text-sm text-skin-theme-font-400'}>
                                         <div className={'flex flex-row justify-start gap-2'}>
                                             <input type={'checkbox'}/>
                                             <p>Remember me</p>
@@ -66,7 +65,7 @@ const SignIn = () => {
                                         className={'rounded-lg w-full py-3 bg-skin-theme-400 ring-1 ring-skin-theme-600/40 text-skin-theme-font-900 text-lg font-semibold'}>Sign
                                         in to your account
                                     </button>
-                                    <p className={'text-sm'}>Dont have an account yet? <Link href={'/'}
+                                    <p className={'text-xs lgPhone:text-sm text-center'}>Dont have an account yet? <Link href={'/'}
                                                                                              className={'font-bold text-skin-theme-400'}>Sign
                                         up here</Link></p>
                                 </div>
