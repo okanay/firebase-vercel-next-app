@@ -8,7 +8,7 @@ const SignIn = () => {
         <div className={'px-4 pt-6 bg-skin-theme-body-50 py-10'}>
 
             {/* Information - and Sign In Form */}
-            <div className={'grid grid-cols-12 grid-flow-col gap-4 bg-skin-theme-body-100 laptop:px-10 desktop:px-16 rounded-xl'}>
+            <div className={'grid grid-cols-12 grid-flow-col gap-4 bg-skin-theme-body-100 laptop:px-20 desktop:px-24 rounded-xl'}>
 
                 {/* Information */}
                 <div className={'hidden tablet:block col-span-6 px-8 py-16'}>
