@@ -52,9 +52,9 @@ const SignIn = () => {
                             <form>
                                 <div className={'flex flex-col gap-5 justify-start'}>
                                     <input type="text" placeholder={'Email'}
-                                           className={'px-4 w-full h-10 rounded-lg border border-skin-theme-body-300 bg-skin-theme-body-100 focus:outline-none'}/>
+                                           className={'px-3 w-full h-10 rounded-lg border border-skin-theme-body-300 bg-skin-theme-body-100 focus:outline-none'}/>
                                     <input type="password" placeholder={'Password'}
-                                           className={'px-4 w-full h-10 rounded-lg border border-skin-theme-body-300 bg-skin-theme-body-100 focus:outline-none'}/>
+                                           className={'px-3 w-full h-10 rounded-lg border border-skin-theme-body-300 bg-skin-theme-body-100 focus:outline-none'}/>
 
                                     <div className={'flex flex-row justify-between text-sm text-skin-theme-font-400'}>
                                         <div className={'flex flex-row justify-start gap-2'}>
