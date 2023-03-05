@@ -25,8 +25,7 @@ const SignIn = () => {
                 {/*Sign In Form*/}
                 <div className={'col-span-12 md:col-span-6'}>
                     <div className={'h-full w-full laptop:pl-8 px-4 my-14'}>
-                        <div
-                            className={'bg-skin-theme-body-50 rounded-lg shadow flex flex-col justify-start py-6 px-8 gap-5'}>
+                        <div className={'bg-skin-theme-body-50 rounded-lg shadow flex flex-col justify-start py-6 px-8 gap-5'}>
                             <h2 className={'text-2xl font-bold text-skin-theme-font-100'}>Welcome back</h2>
                             {/* Google and Apple Sign In Buttons*/}
                             <div
