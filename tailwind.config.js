@@ -23,7 +23,7 @@ module.exports = {
         'basePhone': "390px",
         'lgPhone': "414px",
         'xlPhone': "440px",
-        'tablet': '635px',
+        'tablet': '646px',
         'laptop': '1024px',
         'desktop': '1280px',
       },

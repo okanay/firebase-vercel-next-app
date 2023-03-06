@@ -21,7 +21,7 @@ const Navigation = () => {
                     In
                 </Link>
                 <Link
-                    href={'/'}
+                    href={'/signup'}
                     className={'rounded px-4 py-2 bg-skin-theme-body-50 border border-skin-theme-body-900 text-skin-theme-font-50'}>Sign
                     Up
                 </Link>

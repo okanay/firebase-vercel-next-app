@@ -7,8 +7,6 @@ const ThemeSelect = () => {
     const dispatch = useDispatch()
     const theme = useSelector(state => state.theme.value)
 
-    console.log(theme)
-
     return <div className={"bg-skin-theme-body-50 my-2"}>
         <Head>
             <title>Theme Selector</title>
