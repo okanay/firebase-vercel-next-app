@@ -4,8 +4,8 @@ export const themeSlice = createSlice({
     name: 'theme',
     initialState: {
         value: {
-            color: "root-theme",
-            mode: "dark",
+            color: "fifth-theme",
+            mode: "light",
             themes: [
                 {theme: "root-theme"},
                 {theme: "second-theme"},
