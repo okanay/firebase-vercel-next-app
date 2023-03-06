@@ -1,11 +1,17 @@
 import {Fragment} from "react";
 import InformationText from "../../components/ui/informationText";
 import Link from "next/link";
+import Head from "next/head";
 
 const SignIn = () => {
 
     return (<Fragment>
         <div className={'px-4 pt-6 bg-skin-theme-body-50 py-10'}>
+
+            <Head>
+                <title>Sign In For Next Firebase App Demo</title>
+                <meta name='description' content="Sign In to Next Auth - Firebase Demo" />
+            </Head>
 
             {/* Information - and Sign In Form */}
             <div className={'grid grid-cols-12 grid-flow-col gap-4 bg-skin-theme-body-100 laptop:px-20 desktop:px-24 rounded-xl'}>

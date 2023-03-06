@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {useSelector} from "react-redux";
+import Head from "next/head";
 
 const Navigation = () => {
 
@@ -7,6 +8,10 @@ const Navigation = () => {
 
 
     return (<div className={'bg-skin-theme-body-50 px-4 py-2'}>
+        <Head>
+            <title>Sign Next Firebase</title>
+            <meta name='description' content="Sign In, Sign Us to Next Auth - Firebase Demo" />
+        </Head>
         <div className={'flex flex-row justify-between w-full items-center'}>
             <Link href={'/'} className={'text-skin-theme-400 font-semibold text-xl lgPhone:text-3xl'}>Firebase Auth</Link>
             <div className={'space-x-3 text-xs lgPhone:text-sm'}>

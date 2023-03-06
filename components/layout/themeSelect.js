@@ -1,7 +1,8 @@
 import {useDispatch, useSelector} from "react-redux";
 import {changeThemeColorByAction, changeThemeModeByAction} from "../../src/features/theme/themeSlice";
+import Head from "next/head";
 
-const Footer = () => {
+const ThemeSelect = () => {
 
     const dispatch = useDispatch()
     const theme = useSelector(state => state.theme.value)
@@ -9,6 +10,10 @@ const Footer = () => {
     console.log(theme)
 
     return <div className={"bg-skin-theme-body-50 my-2"}>
+        <Head>
+            <title>Theme Selector</title>
+            <meta name='description' content="Theme Selector, For Next JS Firebase Example." />
+        </Head>
         <div className={'flex flex-row justify-between px-4'}>
             <div className={'space-x-3'}>
                 {theme !== undefined && theme.themes.map(item => {
@@ -38,4 +43,4 @@ const Footer = () => {
     </div>
 }
 
-export default Footer
+export default ThemeSelect
