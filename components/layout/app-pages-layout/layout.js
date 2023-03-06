@@ -13,7 +13,6 @@ const Layout = ({children}) => {
                 <title>Firebase App Tailwind</title>
                 <meta name="description" content="Firebase Backend - For Next JS Project. - Using also Tailwind CSS."/>
             </Head>
-            <ThemeSelect />
             <Navigation/>
             {children}
         </div>

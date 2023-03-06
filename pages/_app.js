@@ -1,5 +1,5 @@
 import '../styles/globals.css'
-import Layout from "../components/layout/layout";
+import Layout from "../components/layout/app-pages-layout/layout";
 import {Provider} from 'react-redux'
 import store from '../src/app/store'
 import Head from "next/head";

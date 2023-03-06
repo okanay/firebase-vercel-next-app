@@ -35,12 +35,10 @@ const SignUp = () => {
                             <div
                                 className={'flex flex-row justify-between text-[0.7rem] basePhone:text-xs tablet:sm font-semibold gap-4'}>
                                 <button
-                                    className={'rounded-lg w-full py-3 bg-skin-theme-body-900 ring-1 ring-skin-theme-body-50 text-skin-theme-font-900'}>Sign
-                                    up with Google
+                                    className={'rounded-lg w-full py-3 bg-skin-theme-body-900 ring-1 ring-skin-theme-body-50 text-skin-theme-font-900'}>Sign with Google
                                 </button>
                                 <button
-                                    className={'rounded-lg w-full py-3 bg-skin-theme-body-50 ring-1 ring-skin-theme-body-600/40 text-skin-theme-font-50'}>Sign
-                                    up with Apple
+                                    className={'rounded-lg w-full py-3 bg-skin-theme-body-50 ring-1 ring-skin-theme-body-600/40 text-skin-theme-font-50'}>Sign with Apple
                                 </button>
                             </div>
                             {/* Diveded Bottoms - or - Diveded Bottoms*/}
