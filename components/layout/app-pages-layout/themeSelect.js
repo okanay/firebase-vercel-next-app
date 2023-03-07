@@ -7,30 +7,30 @@ const ThemeSelect = () => {
     const dispatch = useDispatch()
     const theme = useSelector(state => state.theme.value)
 
-    return <div className={"bg-skin-theme-body-50 my-2"}>
+    return <div className={"bg-skin-theme-body-50"}>
         <Head>
             <title>Theme Selector</title>
             <meta name='description' content="Theme Selector, For Next JS Firebase Example."/>
         </Head>
-        <div className={'flex flex-row justify-between px-4'}>
-            <div className={'space-x-3'}>
+        <div className={'flex flex-row justify-between'}>
+            <div className={'pl-0.5'}>
                 {theme !== undefined && theme.themes.map(item => {
                     return (<button
                         key={item.theme + "color-change-theme"}
                         onClick={() => {
                             dispatch(changeThemeColorByAction(item.theme))
                         }}
-                        className={`${item.theme} ${theme.color !== item.theme ? "w-4 h-4" : "w-[1.1rem] h-[1.1rem]"} rounded-full ${theme.color === item.theme ? "bg-skin-theme-400 ring-skin-theme-body-800" : "bg-skin-theme-300 ring-skin-theme-body-900"} ring-2 `}/>)
+                        className={`mr-3 ${item.theme} ${theme.color !== item.theme ? "w-4 h-4" : "w-[1.1rem] h-[1.1rem]"} rounded-full ${theme.color === item.theme ? "bg-skin-theme-400 ring-skin-theme-body-800" : "bg-skin-theme-300 ring-skin-theme-body-900"} ring-2 `}/>)
                 })}
             </div>
-            <div className={'space-x-3'}>
+            <div className={''}>
                 {theme !== undefined && theme.modes.map(item => {
                     return (<button
                         key={item.mode + "mode-change-theme"}
                         onClick={() => {
                             dispatch(changeThemeModeByAction(item.mode))
                         }}
-                        className={`${item.mode} rounded-full ring ring-skin-theme-body-900 bg-skin-theme-body-50 ${theme.mode !== item.mode ? "w-4 h-4" : "w-[1.1rem] h-[1.1rem]"}`}/>)
+                        className={`ml-3 ${item.mode} rounded-full ring ring-skin-theme-body-900 bg-skin-theme-body-50 ${theme.mode !== item.mode ? "w-4 h-4" : "w-[1.1rem] h-[1.1rem]"}`}/>)
                 })}
             </div>
         </div>

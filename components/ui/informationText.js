@@ -1,8 +1,8 @@
 const InformationText = ({title,children}) => {
 
     return (
-        <div className={'flex flex-col justify-start gap-1 items-start'}>
-            <div className={'flex flex-row justify-start gap-2 items-start'}>
+        <div className={'flex flex-col justify-start gap-1 extensionNavigationBars-start'}>
+            <div className={'flex flex-row justify-start gap-2 extensionNavigationBars-start'}>
                 <svg
                     className="mt-1 w-5 h-5 text-skin-theme-400"
                     fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

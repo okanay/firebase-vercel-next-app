@@ -20,10 +20,18 @@ const SignIn = () => {
                 {/* Information */}
                 <div className={'hidden tablet:block col-span-6 px-8 py-16'}>
                     <div className={'flex flex-col gap-8 justify-start'}>
-                        <InformationText title={"Get connected quickly!"}>Integrate with developer-friendly APIs or choose
+                        <InformationText title={"Get connected quickly!"}>Integrate with developer-friendly APIs or
+                            choose
                             low-code.</InformationText>
-                        <InformationText title={"Support 2 authentication model!"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequuntur..</InformationText>
-                        <InformationText title={"Connecting to cloud server has never been easier!"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores consequuntur..</InformationText>
+                        <InformationText title={"Support 2 authentication model!"}>Lorem ipsum dolor sit amet,
+                            consectetur adipisicing elit. Asperiores consequuntur..</InformationText>
+                        <InformationText title={"Connecting to cloud server has never been easier!"}>Lorem ipsum dolor
+                            sit amet, consectetur adipisicing elit. Asperiores consequuntur..</InformationText>
+                        <Link
+                            href={'/profile'}
+                            className={'font-bold text-skin-theme-400 text-xs lgPhone:text-sm text-start'}>
+                            Go To Dummy Profile Page
+                        </Link>
                     </div>
                 </div>
 
@@ -46,7 +54,7 @@ const SignIn = () => {
                                 </button>
                             </div>
                             {/* Diveded Bottoms - or - Diveded Bottoms*/}
-                            <div className={'flex flex-row justify-around gap-6 items-center'}>
+                            <div className={'flex flex-row justify-around gap-6 extensionNavigationBars-center'}>
                                 <div
                                     className={'border-b-[1.25px] rounded-2xl border-skin-theme-body-300/70 w-full h-1'}></div>
                                 <p className={'text-skin-theme-font-400'}>or</p>

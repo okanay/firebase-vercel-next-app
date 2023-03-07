@@ -12,10 +12,10 @@ const Navigation = () => {
             <title>Sign Next Firebase</title>
             <meta name='description' content="Sign In, Sign Us to Next Auth - Firebase Demo"/>
         </Head>
-        <div className={'flex flex-row flex-wrap justify-between w-full items-center'}>
-            <Link href={'/'} className={'text-skin-theme-400 font-semibold text-xl lgPhone:text-3xl'}>Firebase
+        <div className={'flex flex-row flex-wrap justify-between w-full extensionNavigationBars-center'}>
+            <Link href={'/'} className={'text-skin-theme-400 font-semibold text-xl tablet:text-3xl'}>Firebase
                 Auth</Link>
-            <div className={'flex flex-row gap-3 items-center text-xs tablet:text-sm'}>
+            <div className={'flex flex-row gap-3 extensionNavigationBars-center text-xs tablet:text-sm'}>
                 <Link
                     href={'/signin'}
                     className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
@@ -28,7 +28,7 @@ const Navigation = () => {
                 </Link>
                 <Link
                     href={'/profile'}
-                    className={'hidden laptop:block rounded px-4 py-2 bg-skin-theme-400 border border-skin-theme-200 text-skin-theme-font-1000'}>Profile
+                    className={'hidden lgPhone:block rounded px-4 py-2 bg-skin-theme-400 border border-skin-theme-200 text-skin-theme-font-1000'}>Profile
                 </Link>
             </div>
         </div>

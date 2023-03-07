@@ -42,7 +42,7 @@ const SignUp = () => {
                                 </button>
                             </div>
                             {/* Diveded Bottoms - or - Diveded Bottoms*/}
-                            <div className={'flex flex-row justify-around gap-6 items-center'}>
+                            <div className={'flex flex-row justify-around gap-6 extensionNavigationBars-center'}>
                                 <div
                                     className={'border-b-[1.25px] rounded-2xl border-skin-theme-body-300/70 w-full h-1'}></div>
                                 <p className={'text-skin-theme-font-400'}>or</p>
