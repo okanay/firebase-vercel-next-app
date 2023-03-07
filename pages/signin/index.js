@@ -27,11 +27,6 @@ const SignIn = () => {
                             consectetur adipisicing elit. Asperiores consequuntur..</InformationText>
                         <InformationText title={"Connecting to cloud server has never been easier!"}>Lorem ipsum dolor
                             sit amet, consectetur adipisicing elit. Asperiores consequuntur..</InformationText>
-                        <Link
-                            href={'/profile'}
-                            className={'font-bold text-skin-theme-400 text-xs lgPhone:text-sm text-start'}>
-                            Go To Dummy Profile Page
-                        </Link>
                     </div>
                 </div>
 
@@ -85,6 +80,11 @@ const SignIn = () => {
                                         href={'/signup'}
                                         className={'font-bold text-skin-theme-400'}>Sign
                                         up here</Link></p>
+                                    <Link
+                                        href={'/profile'}
+                                        className={'font-bold text-skin-theme-400 text-xs lgPhone:text-sm text-center'}>
+                                        Go To Dummy Profile Page
+                                    </Link>
                                 </div>
                             </form>
                         </div>

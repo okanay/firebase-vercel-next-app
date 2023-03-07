@@ -11,7 +11,7 @@ export const extensionNavigation = createSlice({
             sideNavigationBarTypes: [
                 {
                     statusType: "hidden-menu",
-                    menuExtensionClass: "-translate-x-full sm:translate-x-0",
+                    menuExtensionClass: "-translate-x-full translate-x-0 ",
                 },
                 {
                     statusType: "open-menu",
@@ -56,9 +56,9 @@ export const extensionNavigation = createSlice({
             }
 
         },
-        changeSideNavigationSelectedType: (state, action) => {
+        changeSideNavigationSelectedTypeOpposite: (state, action) => {
             const type = state.value.sideNavigationSelectedType.statusType === "open-menu" ? 0 : 1
-            state.value.sideNavigationSelectedType = state.value.sideNavigationBarTypes[type]
+            state.value.sideNavigationSelectedType = {...state.value.sideNavigationBarTypes[type]}
         },
         changeSideNavigationTypeToOpen: (state, action) => {
             const type = 0
@@ -67,6 +67,6 @@ export const extensionNavigation = createSlice({
     }
 })
 
-export const {changeExtensionState, changeSideNavigationSelectedType, changeSideNavigationTypeToOpen} = extensionNavigation.actions
+export const {changeExtensionState, changeSideNavigationSelectedTypeOpposite, changeSideNavigationTypeToOpen} = extensionNavigation.actions
 
 export default extensionNavigation.reducer

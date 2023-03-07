@@ -2,20 +2,20 @@ import Link from "next/link";
 import {useState} from "react";
 import Image from "next/image";
 import {useDispatch, useSelector} from "react-redux";
-import {
-    changeExtensionState,
-    changeSideNavigationSelectedType, changeSideNavigationTypeToOpen
+import {changeExtensionState, changeSideNavigationSelectedTypeOpposite, changeSideNavigationTypeToOpen
 } from "../../../src/features/extensionNavigation/extensionNavigationSlicer";
 
 const ProfileLayout = ({children}) => {
 
     const extensionNavigation = useSelector( state => state.extensionNavigation)
+    const themeSelector = useSelector( state => state.theme)
     const dispatch = useDispatch()
+
 
     return (
         <div className={'flex flex-row justify-start'}>
             <div className={`absolute tablet:static h-[4rem]`}>
-                <button onClick={() => {dispatch(changeSideNavigationSelectedType())} } data-drawer-target="sidebar-multi-level-sidebar"
+                <button onClick={() => {dispatch(changeSideNavigationSelectedTypeOpposite())}} data-drawer-target="sidebar-multi-level-sidebar"
                         data-drawer-toggle="sidebar-multi-level-sidebar"
                         aria-controls="sidebar-multi-level-sidebar" type="button"
                         className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-skin-theme-font-50 rounded-lg tablet:hidden">
@@ -117,7 +117,7 @@ const ProfileLayout = ({children}) => {
                     </div>
                 </aside>
             </div>
-            <div onClick={() => {dispatch(changeSideNavigationTypeToOpen())} } className={'w-full px-4 mt-12 tablet:mt-4'}>
+            <div onClick={() => {dispatch(changeSideNavigationTypeToOpen())}} className={'w-full px-4 mt-12 tablet:mt-4'}>
                 {children}
             </div>
         </div>
