@@ -1,10 +1,12 @@
 import '../styles/globals.css'
 import Layout from "../components/layout/app-pages-layout/layout";
-import {Provider} from 'react-redux'
-import store from '../src/app/store'
 import Head from "next/head";
 
+import {Provider} from "react-redux";
+import store from "../src/app/store";
 function MyApp({Component, pageProps}) {
+
+
     return (<Provider store={store}>
             <Head>
                 <meta name="application-name" content="Firebase Auth"/>
@@ -19,8 +21,8 @@ function MyApp({Component, pageProps}) {
                 <meta name="publisher" content="Okan Ay"/>
                 <meta name="format-detection" content="telephone=no, address=no, email=okanay@hotmail.com"/>
                 <meta name="title" content="Firebase Configure with Next JS"/>
-                <meta content="Tailwind CSS | Firebase Auth Next JS" property="og:title" />
-                <meta content="@wokanay" name="twitter:site" />
+                <meta content="Tailwind CSS | Firebase Auth Next JS" property="og:title"/>
+                <meta content="@wokanay" name="twitter:site"/>
                 <meta name="description"
                       content="This site tries to explain how to configure Firebase from Next JS Application. "/>
                 <meta name="keywords"

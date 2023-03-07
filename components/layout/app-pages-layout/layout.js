@@ -1,10 +1,7 @@
 import Navigation from "./navigation";
 import Head from "next/head";
 import Theme from "./theme";
-import ThemeSelect from "./themeSelect";
-
 const Layout = ({children}) => {
-
 
     return (
         <Theme>
@@ -21,3 +18,4 @@ const Layout = ({children}) => {
 }
 
 export default Layout
+

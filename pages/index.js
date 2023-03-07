@@ -11,3 +11,10 @@ export default function Home({children}) {
         </div>
     )
 }
+
+export async function getServerSideProps({ req, res }) {
+
+    return {
+        props: {},
+    }
+}
