@@ -11,7 +11,7 @@ export const extensionNavigation = createSlice({
             sideNavigationBarTypes: [
                 {
                     statusType: "hidden-menu",
-                    menuExtensionClass: "-translate-x-full smPhone:translate-x-0 basePhone:translate-x-0 lgPhone:translate-x-0 xlPhone:translate-x-0 tablet:translate-x-0 tablet:translate-x-full",
+                    menuExtensionClass: "hidden tablet:block",
                 },
                 {
                     statusType: "open-menu",
