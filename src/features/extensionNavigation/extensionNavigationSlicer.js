@@ -21,13 +21,13 @@ export const extensionNavigation = createSlice({
             extensionNavigationBars: [
                 {
                     extensionID: 0,
-                    extensionState: true,
-                    value: "hidden"
+                    extensionState: false,
+                    value: ""
                 },
                 {
                     extensionID: 1,
-                    extensionState: true,
-                    value: "hidden"
+                    extensionState: false,
+                    value: ""
                 }
             ]
         }
