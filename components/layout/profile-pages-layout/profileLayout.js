@@ -13,7 +13,7 @@ const ProfileLayout = ({children}) => {
 
     return (
         <div className={'flex flex-row justify-start'}>
-            <div className={`absolute tablet:static h-[4rem]`}>
+            <div className={`absolute tablet:static`}>
                 <button onClick={() => {dispatch(changeSideNavigationSelectedTypeOpposite())}} data-drawer-target="sidebar-multi-level-sidebar"
                         data-drawer-toggle="sidebar-multi-level-sidebar"
                         aria-controls="sidebar-multi-level-sidebar" type="button"
@@ -27,7 +27,7 @@ const ProfileLayout = ({children}) => {
                 </button>
 
                 <aside id="sidebar-multi-level-sidebar"
-                       className={`sticky top-0 left-0 z-40 w-64 h-screen transition-transform ${extensionNavigation.value.sideNavigationSelectedType.menuExtensionClass} md-2 tablet:mt-0`}
+                       className={`sticky top-0 left-0 z-40 w-64 transition-transform ${extensionNavigation.value.sideNavigationSelectedType.menuExtensionClass} md-2 tablet:mt-0`}
                        aria-label="Sidebar">
                     <div className="h-full px-3 py-4 overflow-y-auto bg-skin-theme-body-50">
                         <ul className="space-y-2">
