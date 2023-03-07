@@ -11,7 +11,7 @@ export const extensionNavigation = createSlice({
             sideNavigationBarTypes: [
                 {
                     statusType: "hidden-menu",
-                    menuExtensionClass: "-translate-x-full translate-x-0 ",
+                    menuExtensionClass: "-translate-x-full smPhone:translate-x-0 basePhone:translate-x-0 lgPhone:translate-x-0 xlPhone:translate-x-0 tablet:translate-x-0 tablet:translate-x-full",
                 },
                 {
                     statusType: "open-menu",
@@ -33,27 +33,26 @@ export const extensionNavigation = createSlice({
         }
     },
     reducers: {
-        changeExtensionState: async (state, action) => {
+        changeExtensionState: (state, action) => {
 
-            const find = await state.value.extensionNavigationBars.find(item =>
-            {
+            const find = state.value.extensionNavigationBars.find(item => {
                 return item.extensionID === action.payload
             })
-
             const copyExtension = [...state.value.extensionNavigationBars]
 
             if (find) {
+                let status = false;
                 copyExtension.map(item => {
-                    if (item.extensionID === find.extensionID)
-                    {
+                    if (item.extensionID === find.extensionID && !status) {
                         item.extensionState = !item.extensionState
                         item.value = item.extensionState === true ? "hidden" : ""
+                        status = true
                     }
                 })
 
-
-                state.value.extensionNavigationBars = copyExtension
-
+                if (status) {
+                    state.value.extensionNavigationBars = copyExtension
+                }
             }
 
         },
