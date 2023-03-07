@@ -33,26 +33,27 @@ export const extensionNavigation = createSlice({
         }
     },
     reducers: {
-        changeExtensionState: (state, action) => {
+        changeExtensionState: async (state, action) => {
 
-            const find = state.value.extensionNavigationBars.find(item => {
+            const find = await state.value.extensionNavigationBars.find(item =>
+            {
                 return item.extensionID === action.payload
             })
+
             const copyExtension = [...state.value.extensionNavigationBars]
 
             if (find) {
-                let status = false;
                 copyExtension.map(item => {
-                    if (item.extensionID === find.extensionID && !status) {
+                    if (item.extensionID === find.extensionID)
+                    {
                         item.extensionState = !item.extensionState
                         item.value = item.extensionState === true ? "hidden" : ""
-                        status = true
                     }
                 })
 
-                if (status) {
-                    state.value.extensionNavigationBars = copyExtension
-                }
+
+                state.value.extensionNavigationBars = copyExtension
+
             }
 
         },
@@ -62,7 +63,7 @@ export const extensionNavigation = createSlice({
         },
         changeSideNavigationTypeToOpen: (state, action) => {
             const type = 0
-            state.value.sideNavigationSelectedType = state.value.sideNavigationBarTypes[type]
+            state.value.sideNavigationSelectedType = {...state.value.sideNavigationBarTypes[type]}
         },
     }
 })

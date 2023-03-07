@@ -8,7 +8,6 @@ import {changeExtensionState, changeSideNavigationSelectedTypeOpposite, changeSi
 const ProfileLayout = ({children}) => {
 
     const extensionNavigation = useSelector( state => state.extensionNavigation)
-    const themeSelector = useSelector( state => state.theme)
     const dispatch = useDispatch()
 
 
