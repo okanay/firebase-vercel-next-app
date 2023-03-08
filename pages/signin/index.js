@@ -90,14 +90,15 @@ const SignIn = () => {
                                     <input type="password" placeholder={'Password'}
                                            className={'px-3 w-full h-10 rounded-lg border border-skin-theme-body-300 bg-skin-theme-body-100 focus:outline-none'}/>
                                     </m.div>
-                                    <div
+                                    <m.div
+                                        variants={animationStore.loadOpacityWithYAngle}
                                         className={'flex flex-row justify-between text-xs lgPhone:text-sm text-skin-theme-font-400'}>
                                         <div className={'flex flex-row justify-start gap-2'}>
                                             <input type={'checkbox'}/>
                                             <p>Remember me</p>
                                         </div>
                                         <p className={'text-bold text-skin-theme-400'}>Forgot password?</p>
-                                    </div>
+                                    </m.div>
                                     <m.button
                                         variants={animationStore.loadOpacityWithYAngle}
                                         className={'rounded-lg w-full py-3 bg-skin-theme-400 ring-1 ring-skin-theme-600/40 text-skin-theme-font-900 text-lg laptop:text-xl font-semibold'}>Sign
