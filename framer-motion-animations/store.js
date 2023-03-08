@@ -17,19 +17,25 @@ export const animationStore = {
     sideNavigationBar: {
         initial: {
             opacity: 1,
+            z : 0,
+            position: "static",
+            transition: {delay: 0, duration: 0.25, ease: "linear"}
         },
         open: {
             x: 0,
-            transition: {delay: 0, duration: 0.2, ease: "easeInOut"}
+            transition: {delay: 0, duration: 0.25, ease: "linear"}
         },
         close: {
-            display: 'none',
-            x: -300,
-            transition: {delay: 0, duration: 0.2, ease: "easeInOut"}
+            x: -250,
+            z : -10,
+            position: "absolute",
+            transition: {delay: 0, duration: 0.2, ease: "linear"}
         },
         closePriority: {
             x: 0,
-            transition: {delay: 0, duration: 0, ease: "easeInOut"}
+            z : 0,
+            position: "static",
+            transition: {delay: 0, duration: 0, ease: "linear"}
         }
     },
     staggerBase: {

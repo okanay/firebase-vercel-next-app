@@ -44,7 +44,7 @@ const ProfileLayout = ({children}) => {
                 <m.aside variants={animationStore.sideNavigationBar}
                          animate={extensionNavigation.value.sideNavigationSelectedType.statusType === "hidden-menu" ? `${sideNavigationMediaQuery}` : "open"}
                          initial={'initial'} id="sidebar-multi-level-sidebar"
-                         className={`sticky top-0 left-0 z-40 w-64 transition-transform md-2 tablet:mt-0`}
+                         className={`sticky top-0 left-0 z-40 w-64 md-2 tablet:mt-0`}
                          aria-label="Sidebar"
                 >
                     <div className="h-full px-3 py-4 overflow-y-auto bg-skin-theme-body-50">
