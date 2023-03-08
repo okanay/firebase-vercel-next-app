@@ -142,7 +142,7 @@ const ProfileLayout = ({children}) => {
             </div>
             <div onClick={() => {
                 dispatch(changeSideNavigationTypeToOpened())
-            }} className={'w-full px-4 mt-12 tablet:mt-4'}>
+            }} className={'w-full px-4 mt-12 tablet:mt-4 h-[100vh]'}>
                 {children}
             </div>
         </div>
