@@ -16,10 +16,6 @@ export const animationStore = {
     },
     sideNavigationBar: {
         initial: {
-            opacity: 1,
-            z : 0,
-            position: "static",
-            transition: {delay: 0, duration: 0.25, ease: "linear"}
         },
         open: {
             x: 0,
