@@ -5,7 +5,8 @@ import {useDispatch, useSelector} from "react-redux";
 import {
     changeExtensionState,
     changeSideNavigationSelectedTypeOpposite,
-    changeSideNavigationTypeToOpen
+    changeSideNavigationTypeToOpened,
+    changeSideNavigationTypeToClosed
 } from "../../../src/features/extensionNavigation/extensionNavigationSlicer";
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../../framer-motion-animations/store";
@@ -16,6 +17,13 @@ const ProfileLayout = ({children}) => {
     const extensionNavigation = useSelector(state => state.extensionNavigation)
     const dispatch = useDispatch()
     const sideNavigationMediaQuery = useMediaQuery("768px", "close", "closePriority")
+
+    useEffect(() => {
+
+        return () => {
+            dispatch(changeSideNavigationTypeToClosed())
+        }
+    }, [] )
 
     return (
         <div className={'flex flex-row justify-start'}>
@@ -132,7 +140,7 @@ const ProfileLayout = ({children}) => {
                 </m.aside>
             </div>
             <div onClick={() => {
-                dispatch(changeSideNavigationTypeToOpen())
+                dispatch(changeSideNavigationTypeToOpened())
             }} className={'w-full px-4 mt-12 tablet:mt-4'}>
                 {children}
             </div>

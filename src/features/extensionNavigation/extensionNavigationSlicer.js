@@ -57,13 +57,17 @@ export const extensionNavigation = createSlice({
             const type = state.value.sideNavigationSelectedType.statusType === "open-menu" ? 0 : 1
             state.value.sideNavigationSelectedType = {...state.value.sideNavigationBarTypes[type]}
         },
-        changeSideNavigationTypeToOpen: (state, action) => {
+        changeSideNavigationTypeToClosed: (state, action) => {
+            const type = 1
+            state.value.sideNavigationSelectedType = {...state.value.sideNavigationBarTypes[type]}
+        },
+        changeSideNavigationTypeToOpened: (state, action) => {
             const type = 0
             state.value.sideNavigationSelectedType = {...state.value.sideNavigationBarTypes[type]}
         },
     }
 })
 
-export const {changeExtensionState, changeSideNavigationSelectedTypeOpposite, changeSideNavigationTypeToOpen} = extensionNavigation.actions
+export const {changeExtensionState, changeSideNavigationSelectedTypeOpposite, changeSideNavigationTypeToClosed, changeSideNavigationTypeToOpened} = extensionNavigation.actions
 
 export default extensionNavigation.reducer
