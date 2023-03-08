@@ -4,10 +4,15 @@ import Head from "next/head";
 
 import {Provider} from "react-redux";
 import store from "../src/app/store";
+import {AnimatePresence, motion} from "framer-motion";
+import {useRouter} from "next/router";
+
 function MyApp({Component, pageProps}) {
 
+    const router = useRouter()
 
-    return (<Provider store={store}>
+    return (
+        <Provider store={store}>
             <Head>
                 <meta name="application-name" content="Firebase Auth"/>
                 <meta name="author" content="Okan Ay"/>
@@ -33,9 +38,13 @@ function MyApp({Component, pageProps}) {
                 <meta name="revisit-after" content="5 days"/>
                 <meta name="author" content="Okan Ay"/>
             </Head>
+
             <Layout>
-                <Component {...pageProps} />
+                <AnimatePresence mode='wait'>
+                    <Component {...pageProps} key={router.pathname} />
+                </AnimatePresence>
             </Layout>
+
         </Provider>
     )
 }

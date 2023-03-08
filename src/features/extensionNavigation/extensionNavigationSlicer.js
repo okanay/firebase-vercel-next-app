@@ -6,16 +6,13 @@ export const extensionNavigation = createSlice({
         value: {
             sideNavigationSelectedType : {
                 statusType: "open-menu",
-                menuExtensionClass: "",
             },
             sideNavigationBarTypes: [
                 {
                     statusType: "hidden-menu",
-                    menuExtensionClass: "hidden tablet:block",
                 },
                 {
                     statusType: "open-menu",
-                    menuExtensionClass: "",
                 }
             ],
             extensionNavigationBars: [

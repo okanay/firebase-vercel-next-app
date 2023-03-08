@@ -19,13 +19,13 @@ module.exports = {
   theme: {
     extend: {
       screens: {
-        'smPhone': "375px",
+        'smPhone': "360px",
         'basePhone': "390px",
-        'lgPhone': "414px",
+        'lgPhone': "425px",
         'xlPhone': "440px",
-        'tablet': '646px',
+        'tablet': '768px',
         'laptop': '1024px',
-        'desktop': '1280px',
+        'desktop': '1440px',
       },
       colors : {
         skin : {

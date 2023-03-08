@@ -1,20 +1,28 @@
 import Link from "next/link";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Image from "next/image";
 import {useDispatch, useSelector} from "react-redux";
-import {changeExtensionState, changeSideNavigationSelectedTypeOpposite, changeSideNavigationTypeToOpen
+import {
+    changeExtensionState,
+    changeSideNavigationSelectedTypeOpposite,
+    changeSideNavigationTypeToOpen
 } from "../../../src/features/extensionNavigation/extensionNavigationSlicer";
+import {motion as m} from "framer-motion";
+import {animationStore} from "../../../framer-motion-animations/store";
+import useMediaQuery from "../../../src/costum-hooks/useMediaQuery";
 
 const ProfileLayout = ({children}) => {
 
-    const extensionNavigation = useSelector( state => state.extensionNavigation)
+    const extensionNavigation = useSelector(state => state.extensionNavigation)
     const dispatch = useDispatch()
-
+    const sideNavigationMediaQuery = useMediaQuery("768px", "close", "closePriority")
 
     return (
         <div className={'flex flex-row justify-start'}>
             <div className={`absolute tablet:static`}>
-                <button onClick={() => {dispatch(changeSideNavigationSelectedTypeOpposite())}} data-drawer-target="sidebar-multi-level-sidebar"
+                <button onClick={() => {
+                    dispatch(changeSideNavigationSelectedTypeOpposite())
+                }} data-drawer-target="sidebar-multi-level-sidebar"
                         data-drawer-toggle="sidebar-multi-level-sidebar"
                         aria-controls="sidebar-multi-level-sidebar" type="button"
                         className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-skin-theme-font-50 rounded-lg tablet:hidden">
@@ -26,9 +34,12 @@ const ProfileLayout = ({children}) => {
                     </svg>
                 </button>
 
-                <aside id="sidebar-multi-level-sidebar"
-                       className={`sticky top-0 left-0 z-40 w-64 transition-transform ${extensionNavigation.value.sideNavigationSelectedType.menuExtensionClass} md-2 tablet:mt-0`}
-                       aria-label="Sidebar">
+                <m.aside variants={animationStore.sideNavigationBar}
+                         animate={extensionNavigation.value.sideNavigationSelectedType.statusType === "hidden-menu" ? `${sideNavigationMediaQuery}` : "open"}
+                         initial={'initial'} id="sidebar-multi-level-sidebar"
+                         className={`sticky top-0 left-0 z-40 w-64 transition-transform md-2 tablet:mt-0`}
+                         aria-label="Sidebar"
+                >
                     <div className="h-full px-3 py-4 overflow-y-auto bg-skin-theme-body-50">
                         <ul className="space-y-2">
                             <li>
@@ -45,7 +56,9 @@ const ProfileLayout = ({children}) => {
                             </li>
                             <li>
                                 <button type="button"
-                                        onClick={() => {dispatch(changeExtensionState(0))}}
+                                        onClick={() => {
+                                            dispatch(changeExtensionState(0))
+                                        }}
                                         className="flex items-center w-full p-2 text-base font-normal text-skin-theme-font-50 transition duration-75 rounded-lg group hover:bg-skin-theme-body-100"
                                         aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                                     <svg aria-hidden="true"
@@ -64,7 +77,7 @@ const ProfileLayout = ({children}) => {
                                 </button>
                                 <ul id="dropdown-example"
                                     className={`${extensionNavigation.value.extensionNavigationBars[0].value} py-2 space-y-2`}>
-                                <li>
+                                    <li>
                                         <Link href="/profile/account"
                                               className="flex items-center w-full p-2 pl-11 text-base font-normal text-skin-theme-font-50 transition duration-75 rounded-lg group hover:bg-skin-theme-body-100">Accounts</Link>
                                     </li>
@@ -80,7 +93,9 @@ const ProfileLayout = ({children}) => {
                             </li>
                             <li>
                                 <button type="button"
-                                        onClick={() => {dispatch(changeExtensionState(1))}}
+                                        onClick={() => {
+                                            dispatch(changeExtensionState(1))
+                                        }}
                                         className="flex items-center w-full p-2 text-base font-normal text-skin-theme-font-50 transition duration-75 rounded-lg group hover:bg-skin-theme-body-100"
                                         aria-controls="dropdown-example" data-collapse-toggle="dropdown-example">
                                     <svg aria-hidden="true"
@@ -90,7 +105,7 @@ const ProfileLayout = ({children}) => {
                                               d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
                                               clipRule="evenodd"></path>
                                     </svg>
-                                    <span  className="flex-1 ml-3 text-left whitespace-nowrap"
+                                    <span className="flex-1 ml-3 text-left whitespace-nowrap"
                                     >Privacy</span>
                                     <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20"
                                          xmlns="http://www.w3.org/2000/svg">
@@ -114,9 +129,11 @@ const ProfileLayout = ({children}) => {
                             </li>
                         </ul>
                     </div>
-                </aside>
+                </m.aside>
             </div>
-            <div onClick={() => {dispatch(changeSideNavigationTypeToOpen())}} className={'w-full px-4 mt-12 tablet:mt-4'}>
+            <div onClick={() => {
+                dispatch(changeSideNavigationTypeToOpen())
+            }} className={'w-full px-4 mt-12 tablet:mt-4'}>
                 {children}
             </div>
         </div>
