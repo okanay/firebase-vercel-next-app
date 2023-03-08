@@ -1,7 +1,20 @@
-const InformationText = ({title,children}) => {
+import {motion as m} from "framer-motion";
+import {animationStore} from "../../framer-motion-animations/store";
+
+const itemVariants = {
+    visible: {
+        opacity: 1,
+        y: 0
+    },
+    hidden: {
+        opacity: 0,
+        y: 50
+    }
+};
+const InformationText = ({title, children}) => {
 
     return (
-        <div className={'flex flex-col justify-start gap-1 extensionNavigationBars-start'}>
+        <m.div variants={animationStore.loadOpacityWithYAngle} className={'flex flex-col justify-start gap-1 extensionNavigationBars-start'}>
             <div className={'flex flex-row justify-start gap-2 extensionNavigationBars-start'}>
                 <svg
                     className="mt-1 w-5 h-5 text-skin-theme-400"
@@ -13,7 +26,7 @@ const InformationText = ({title,children}) => {
                 <h2 className={'font-bold text-xl text-skin-theme-font-100'}>{title}</h2>
             </div>
             <h3 className={'mr-8 text-skin-theme-font-300 text-base font-light'}>{children}</h3>
-        </div>
+        </m.div>
     )
 }
 

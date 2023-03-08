@@ -6,10 +6,10 @@ export function middleware(request) {
 
     const url = request.nextUrl.clone()
 
-    if (url.pathname === '/') {
-        url.pathname = '/signin'
-        return NextResponse.redirect(url)
-    }
+    // if (url.pathname === '/') {
+    //     url.pathname = '/signin'
+    //     return NextResponse.redirect(url)
+    // }
 
     let find = false;
     let allCookies = request.cookies.getAll()
