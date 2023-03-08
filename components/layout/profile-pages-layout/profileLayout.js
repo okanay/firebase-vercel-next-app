@@ -1,6 +1,5 @@
 import Link from "next/link";
 import {useEffect, useState} from "react";
-import Image from "next/image";
 import {useDispatch, useSelector} from "react-redux";
 import {
     changeExtensionState,
@@ -49,8 +48,10 @@ const ProfileLayout = ({children}) => {
                          aria-label="Sidebar"
                 >
                     <div className="h-full px-3 py-4 overflow-y-auto bg-skin-theme-body-50">
-                        <ul className="space-y-2">
-                            <li>
+                        <ul
+                            className="space-y-2">
+                            <li
+                            >
                                 <Link href="/profile"
                                       className="flex items-center w-full p-2 text-base font-normal text-skin-theme-font-50 transition duration-75 rounded-lg group hover:bg-skin-theme-body-100">
                                     <svg aria-hidden="true"

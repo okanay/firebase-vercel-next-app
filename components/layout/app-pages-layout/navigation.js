@@ -15,7 +15,7 @@ const Navigation = () => {
         <div className={'flex flex-row flex-wrap justify-between w-full items-center'}>
             <Link href={'/'} className={'text-skin-theme-400 font-semibold text-lg basePhone:text-xl xlPhone:text-3xl'}>Firebase
                 Auth</Link>
-            <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm'}>
+            <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
                 <Link
                     href={'/signin'}
                     className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
@@ -28,7 +28,7 @@ const Navigation = () => {
                 </Link>
                 <Link
                     href={'/profile'}
-                    className={'hidden sm:block rounded px-4 py-2 bg-skin-theme-400 border border-skin-theme-200 text-skin-theme-font-1000'}>Profile
+                    className={'hidden sm:block rounded px-4 py-2 bg-gradient-to-tl from-skin-theme-400 to-skin-theme-500 border border-skin-theme-50 text-skin-theme-50'}>Profile
                 </Link>
             </div>
         </div>

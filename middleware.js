@@ -10,6 +10,11 @@ export function middleware(request) {
         url.pathname = '/signin'
         return NextResponse.redirect(url)
     }
+    else if(url.pathname === '/profile')
+    {
+        url.pathname = '/profile/color-theme'
+        return NextResponse.redirect(url)
+    }
 
     let find = false;
     let allCookies = request.cookies.getAll()

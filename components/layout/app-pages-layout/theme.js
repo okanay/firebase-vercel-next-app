@@ -27,7 +27,7 @@ const Theme = ({children}) => {
         }
     }, []);
 
-    return <div className={'second-theme third-theme fourth-theme fifth-theme sixth-theme root-theme dark light'}>
+    return <div className={'second-theme third-theme fourth-theme fifth-theme sixth-theme seventh-theme eighth-theme ninth-theme root-theme dark light'}>
         <div className={`${theme.color} ${theme.mode} bg-skin-theme-body-50 text-skin-theme-font-50 h-[100vh]`}>{children}</div>
     </div>
 }

@@ -12,7 +12,10 @@ export const themeSlice = createSlice({
                 {theme: "third-theme"},
                 {theme: "fourth-theme"},
                 {theme: "fifth-theme"},
-                {theme: "sixth-theme"}
+                {theme: "sixth-theme"},
+                {theme: "seventh-theme"},
+                {theme: "eighth-theme"},
+                {theme: "ninth-theme"}
             ],
             modes : [
                 {mode : "dark"},

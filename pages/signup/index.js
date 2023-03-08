@@ -16,14 +16,13 @@ const SignUp = () => {
             </Head>
             {/* Information - and Sign In Form */}
             <div
-                className={'grid grid-cols-12 grid-flow-col gap-4 bg-skin-theme-body-100 laptop:px-20 desktop:px-24 rounded-xl'}>
+                className={'grid grid-cols-12 grid-flow-col gap-4 bg-skin-theme-body-100/50 laptop:px-20 desktop:px-24 rounded-xl'}>
                 {/* Information */}
                 <div className={'hidden sm:block col-span-6 px-8 py-16'}>
                     <m.div variants={animationStore.staggerBase}
                            initial="hidden"
                            animate="visible" className={'flex flex-col gap-8 justify-start'}>
-                        <InformationText title={"Get started quickly!"}>Integrate with developer-friendly APIs or choose
-                            low-code.</InformationText>
+                        <InformationText title={"Get started quickly!"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</InformationText>
                         <InformationText title={"Support 2 authentication model!"}>Lorem ipsum dolor sit amet,
                             consectetur adipisicing elit. Asperiores consequuntur..</InformationText>
                         <InformationText title={"Connecting to cloud server has never been easier!"}>Lorem ipsum dolor
@@ -73,7 +72,7 @@ const SignUp = () => {
                                     </m.div>
                                     <m.button
                                         variants={animationStore.loadOpacityWithYAngle}
-                                        className={'rounded-lg w-full py-3 bg-skin-theme-400 ring-1 ring-skin-theme-600/40 text-skin-theme-font-900 text-lg laptop:text-xl font-semibold'}>
+                                        className={'rounded-lg w-full py-3 text-lg laptop:text-xl font-semibold bg-gradient-to-tl from-skin-theme-400 to-skin-theme-500 border border-skin-theme-50 text-skin-theme-font-50'}>
                                         Create your new account
                                     </m.button>
                                     <m.p

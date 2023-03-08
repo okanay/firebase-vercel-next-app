@@ -3,7 +3,7 @@ export const animationStore = {
     main: {
         exit: {
             opacity: 0,
-            transition: {delay: 0.01, duration: 0.1}
+            transition: {delay: 0, duration: 0.1}
         },
         initial: {
             opacity: 0,
@@ -11,7 +11,7 @@ export const animationStore = {
         },
         animate: {
             opacity: 1,
-            transition: {delay: 0.05},
+            transition: {delay: 0.01},
         }
     },
     sideNavigationBar: {
@@ -35,7 +35,7 @@ export const animationStore = {
     staggerBase: {
         visible: {
             transition: {
-                staggerChildren: 0.08,
+                staggerChildren: 0.2,
                 delayChildren: 0.08
             }
         },
@@ -44,8 +44,8 @@ export const animationStore = {
     staggerShort: {
         visible: {
             transition: {
-                staggerChildren: 0.05,
-                delayChildren: 0.05
+                staggerChildren: 0.08,
+                delayChildren: 0.04
             }
         },
         hidden: {}
