@@ -1,11 +1,12 @@
 import Link from "next/link";
 import {useSelector} from "react-redux";
 import Head from "next/head";
+import {signOut, useSession} from "next-auth/react";
 
 const Navigation = () => {
 
     const theme = useSelector(state => state.theme.value)
-
+    const {data: session, status} = useSession()
 
     return (<div className={'bg-skin-theme-body-50 px-4 py-2'}>
         <Head>
@@ -15,22 +16,30 @@ const Navigation = () => {
         <div className={'flex flex-row flex-wrap justify-between w-full items-center'}>
             <Link href={'/'} className={'text-skin-theme-400 font-semibold text-lg basePhone:text-xl xlPhone:text-3xl'}>Firebase
                 Auth</Link>
-            <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
-                <Link
-                    href={'/signin'}
-                    className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
-                    In
-                </Link>
-                <Link
-                    href={'/signup'}
-                    className={'rounded px-4 py-2 bg-skin-theme-body-50 border border-skin-theme-body-900 text-skin-theme-font-50'}>Sign
-                    Up
-                </Link>
-                <Link
-                    href={'/profile'}
-                    className={'hidden sm:block rounded px-4 py-2 bg-gradient-to-tl from-skin-theme-400 to-skin-theme-500 border border-skin-theme-50 text-skin-theme-50'}>Profile
-                </Link>
-            </div>
+            {
+                !session?.user ? (
+                    <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
+                        <Link href={'/signin'}
+                              className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
+                            In</Link>
+                        <Link href={'/signup'}
+                              className={'rounded px-4 py-2 bg-skin-theme-body-50 border border-skin-theme-body-900 text-skin-theme-font-50'}>Sign
+                            Up</Link>
+                    </div>
+                ) : (
+                    <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
+                        <button onClick={() => {
+                            signOut({callbackUrl : "/signin"})
+                        }}
+                                className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
+                            Out
+                        </button>
+                        <Link href={'/profile'}
+                              className={'rounded px-4 py-2 bg-gradient-to-tl from-skin-theme-400 to-skin-theme-500 border border-skin-theme-50 text-skin-theme-50'}>Profile
+                        </Link>
+                    </div>
+                )
+            }
         </div>
     </div>)
 }

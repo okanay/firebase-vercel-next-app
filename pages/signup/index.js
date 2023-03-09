@@ -1,24 +1,25 @@
-import {Fragment, useRef} from "react";
+import {useRef, useState} from "react";
 import InformationText from "../../components/ui/informationText";
 import Head from "next/head";
 import Link from "next/link";
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
-import {createUserWithEmailAndPassword} from "firebase/auth";
-import {doc, setDoc} from "firebase/firestore";
-import {auth, db} from '../../src/firebase'
-
+import {SignUpErrors} from "../../helpers/Errors/SignUpErrors";
+import {useRouter} from "next/router";
 const SignUp = () => {
+
+    const [loading, setLoading] = useState(false)
+    const [error, setError] = useState({status : false , message : ""})
+    const router = useRouter()
 
     const emailRef = useRef('')
     const passwordRef = useRef('')
     const handleSignUpForm = async (event) => {
+        setLoading(true)
         event.preventDefault()
-
         const email = emailRef.current.value
         const password = passwordRef.current.value
-
-        fetch('/api/signup', {
+        const response = await fetch('/api/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -27,13 +28,30 @@ const SignUp = () => {
                 email,
                 password
             })
-        })
-            .then(response => response.json())
-            .then(data => console.log(data.data))
-            .catch(error =>
-            {
-                console.log(error)
-            });
+        }).
+        then(response =>
+        {
+            return response.json()
+        }).
+        then(data =>
+        {
+            return data
+        }).
+        catch(error =>
+        {
+            return error
+        });
+
+        setLoading(false)
+
+        if (response.status !== 200) {
+            const responseError = {status : true, message : SignUpErrors(response.error)}
+            setError({...responseError})
+        }
+        else if (response.status === 200 ) {
+            localStorage.setItem('authentication', JSON.stringify(response.data))
+            router.push('/signin')
+        }
     };
 
     return (<m.div
@@ -42,15 +60,32 @@ const SignUp = () => {
         exit={'exit'}
         className={'px-4 pt-6 bg-skin-theme-body-50 py-10'}>
 
-        {/* Meta Data Information, Headers*/}
+        {/* Metadata Information, Headers*/}
         <Head>
             <title>Sign Up To Next Auth - Firebase Demo</title>
             <meta name='description' content="Sign Up to Next Auth - Firebase Demo"/>
         </Head>
 
+
         {/* Information - and Sign In Form */}
-        <div
-            className={'grid grid-cols-12 grid-flow-col gap-4 bg-skin-theme-body-100/50 laptop:px-20 desktop:px-24 rounded-xl'}>
+        <div className={'grid grid-cols-12 grid-flow-col gap-4 bg-skin-theme-body-100/50 laptop:px-20 desktop:px-24 rounded-xl relative'}>
+
+            {loading && (
+                <div className={'absolute flex flex-col items-center justify-center w-full h-full bg-skin-theme-body-900/10 rounded-xl'} role="status">
+                    <svg aria-hidden="true"
+                         className="w-8 h-8 mr-2 text-gray-200 animate-spin dark:text-gray-600 fill-blue-600"
+                         viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path
+                            d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                            fill="currentColor"/>
+                        <path
+                            d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                            fill="currentFill"/>
+                    </svg>
+                </div>
+            )}
+
+
             {/* Information */}
             <div className={'hidden sm:block col-span-6 px-8 py-16'}>
                 <m.div variants={animationStore.staggerBase}
@@ -113,15 +148,19 @@ const SignUp = () => {
                                 </m.div>
                                 <m.button
                                     variants={animationStore.loadOpacityWithYAngle}
-                                    className={'rounded-lg w-full py-3 text-lg laptop:text-xl font-semibold bg-gradient-to-tl from-skin-theme-400 to-skin-theme-500 border border-skin-theme-50 text-skin-theme-font-50'}>
-                                    Create your new account
+                                    className={'text-center rounded-lg w-full py-3 text-lg laptop:text-xl font-semibold bg-gradient-to-tl from-skin-theme-400 to-skin-theme-500 border border-skin-theme-50 text-skin-theme-font-900'}>
+                                        Create your new account
                                 </m.button>
+                                {error.status && (<p className={'w-full py-2 text-center text-sm text-skin-theme-font-50 font-semibold bg-skin-theme-body-800/20 rounded'}> {error.message}</p>)}
                                 <m.p
                                     variants={animationStore.loadOpacityWithXAngleShort}
                                     className={'text-xs lgPhone:text-sm text-center'}>
-                                    Do you have account already? <Link href={'/signin'}
-                                                                       className={'font-bold text-skin-theme-400'}>Sign
-                                    in here</Link></m.p>
+                                    Do you have account already?
+                                    <Link href={'/signin'}
+                                          className={'font-bold text-skin-theme-400'}>
+                                        {" "} Sign in here
+                                    </Link>
+                                </m.p>
                             </div>
                         </form>
                     </m.div>
@@ -132,3 +171,4 @@ const SignUp = () => {
 }
 
 export default SignUp
+

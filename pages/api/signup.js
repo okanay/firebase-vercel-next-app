@@ -1,8 +1,6 @@
 import {doc, setDoc} from "firebase/firestore";
 import {auth, db} from "../../src/firebase";
 import {createUserWithEmailAndPassword} from "firebase/auth";
-
-
 export default async function handler(req, res) {
 
     const {email, password } = req.body
@@ -12,7 +10,8 @@ export default async function handler(req, res) {
     {
         createUserWithEmailAndPassword(auth, email, password).
         then(response => {return response.user}).
-        then(data => {
+        then(data =>
+        {
             user = data
             return user.stsTokenManager
         }).
@@ -32,13 +31,20 @@ export default async function handler(req, res) {
                 refreshToken,
                 tokenExpire : expirationTime,
             }
-            setDoc(doc(db, "users", uid), data).then(() => {res.status(200).json({data})})
 
+            setDoc(doc(db, "users", uid), data).
+            then(() =>
+            {
+                res.status(200).json({data : data, status : 200})
+            })
         }).
-        catch(error => {res.status(500).json({message: 'Something Fail. CreateUser'})})
+        catch(error =>
+        {
+            res.status(500).json({error: error.code, status : 500})
+        })
     }
     else
     {
-        res.status(500).json({message: 'No Data'})
+        res.status(500).json({error: 'No Data', status : 500})
     }
 }

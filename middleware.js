@@ -1,39 +1,14 @@
-import { NextResponse } from 'next/server'
+import { withAuth } from "next-auth/middleware"
+import { getToken } from "next-auth/jwt";
 
-export function middleware(request) {
+export async function middleware(request) {
 
-    const response = NextResponse.next()
+    const {pathname} = request.nextUrl;
 
-    const url = request.nextUrl.clone()
-
-    if (url.pathname === '/') {
-        url.pathname = '/signin'
-        return NextResponse.redirect(url)
-    }
-    else if(url.pathname === '/profile')
+    if (pathname === "/profile")
     {
-        url.pathname = '/profile/color-theme'
-        return NextResponse.redirect(url)
     }
-
-    let find = false;
-    let allCookies = request.cookies.getAll()
-
-    allCookies.map(cookies => {
-        if(cookies.name === "selectedTheme")
-        {
-            find = true
-        }
-    })
-
-    if (!find)
-    {
-        response.cookies.set('selectedTheme', 'fifth-theme')
-    }
-
-    return response
 }
-
 
 
 // response.cookies.set("accessToken", "okan", {
@@ -45,3 +20,25 @@ export function middleware(request) {
 //     // Available everywhere within the site
 //     path: "/"
 // })
+
+// if (url.pathname === '/') {
+//     url.pathname = '/signin'
+//     return NextResponse.redirect(url)
+// }
+// else if(url.pathname === '/profile')
+// {
+//     url.pathname = '/profile/color-theme'
+//     return NextResponse.redirect(url)
+// }
+
+// allCookies.map(cookies => {
+//     if(cookies.name === "selectedTheme")
+//     {
+//         find = true
+//     }
+// })
+//
+// if (!find)
+// {
+//     response.cookies.set('selectedTheme', 'fifth-theme')
+// }

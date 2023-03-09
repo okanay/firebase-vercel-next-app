@@ -5,11 +5,9 @@ import Head from "next/head";
 import {Provider} from "react-redux";
 import store from "../src/app/store";
 import {AnimatePresence, motion} from "framer-motion";
-import {useRouter} from "next/router";
+import {SessionProvider} from "next-auth/react";
 
-function MyApp({Component, pageProps}) {
-
-    const router = useRouter()
+function MyApp({Component, pageProps: {session, ...pageProps},}) {
 
     return (
         <Provider store={store}>
@@ -38,13 +36,13 @@ function MyApp({Component, pageProps}) {
                 <meta name="revisit-after" content="5 days"/>
                 <meta name="author" content="Okan Ay"/>
             </Head>
-
-            <Layout>
-                <AnimatePresence mode='wait'>
-                    <Component {...pageProps} key={router.pathname} />
-                </AnimatePresence>
-            </Layout>
-
+            <AnimatePresence mode='wait'>
+                <SessionProvider session={session}>
+                    <Layout>
+                        <Component {...pageProps} />
+                    </Layout>
+                </SessionProvider>
+            </AnimatePresence>
         </Provider>
     )
 }
