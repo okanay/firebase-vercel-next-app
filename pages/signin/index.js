@@ -1,17 +1,37 @@
-import {Fragment} from "react";
-import InformationText from "../../components/ui/informationText";
+import {useRef} from "react";
+import {useRouter} from "next/router";
+
+import {useDispatch, useSelector} from "react-redux";
+
 import Link from "next/link";
 import Head from "next/head";
+
+import InformationText from "../../components/ui/informationText";
+
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
+
+import {signInWithEmailAndPassword} from "firebase/auth";
+import {auth} from '../../src/firebase.js'
 
 
 const SignIn = () => {
 
-    return (<>
-        <m.div variants={animationStore.main} initial='initial' animate='animate' exit={'exit'}
-               className={'px-4 pt-6 bg-skin-theme-body-50 py-10'}>
+    const emailRef = useRef()
+    const passwordRef = useRef()
+    const handleSignInFormSubmit = async (event) => {
 
+        event.preventDefault()
+        const email = emailRef.current.value
+        const password = passwordRef.current.value
+    }
+
+    return (<m.div
+        variants={animationStore.main}
+        initial='initial'
+        animate='animate'
+        exit={'exit'}
+        className={'px-4 pt-6 bg-skin-theme-body-50 py-10'}>
             <Head>
                 <title>Sign In to Next Auth - Firebase Demo</title>
                 <meta name='description' content="Sign In to Next Auth - Firebase Demo"/>
@@ -28,7 +48,8 @@ const SignIn = () => {
                            animate="visible"
                            className={'flex flex-col gap-8 justify-start'}>
 
-                        <InformationText title={"Get connected quickly!"}>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</InformationText>
+                        <InformationText title={"Get connected quickly!"}>Lorem ipsum dolor sit amet, consectetur
+                            adipisicing elit.</InformationText>
                         <InformationText title={"Support 2 authentication model!"}>Lorem ipsum dolor sit amet,
                             consectetur adipisicing elit. Asperiores consequuntur..</InformationText>
                         <InformationText title={"Connecting to cloud server has never been easier!"}>Lorem ipsum
@@ -44,10 +65,11 @@ const SignIn = () => {
                         <m.div variants={animationStore.staggerShort}
                                initial="hidden"
                                animate="visible"
-                            className={'bg-skin-theme-body-50 rounded-lg shadow flex flex-col justify-start py-6 px-8 gap-3 basePhone:gap-4'}>
+                               className={'bg-skin-theme-body-50 rounded-lg shadow flex flex-col justify-start py-6 px-8 gap-3 basePhone:gap-4'}>
                             <m.h2
                                 variants={animationStore.loadOpacityWithXAngle}
-                                className={'text-2xl font-bold text-skin-theme-font-100'}>Welcome back</m.h2>
+                                className={'text-2xl font-bold text-skin-theme-font-100'}>Welcome back
+                            </m.h2>
                             {/* Google and Apple Sign In Buttons*/}
                             <div
                                 className={'flex flex-row justify-between text-xs desktop:text-sm font-semibold gap-8 basePhone:gap-4'}>
@@ -73,20 +95,20 @@ const SignIn = () => {
                                     className={'border-b-[1.25px] rounded-2xl border-skin-theme-body-300/70 w-full h-1'}></div>
                             </m.div>
                             {/* Email, Password, Forgot Password , Remember Me, Sign in Button, Sign Us*/}
-                            <form>
+                            <form onSubmit={handleSignInFormSubmit}>
                                 <div className={'flex flex-col gap-5 justify-start'}>
                                     <m.div
                                         variants={animationStore.loadOpacityWithYAngle}
                                     >
-                                    <input type="text" placeholder={'Email'}
-                                           className={'px-3 w-full h-10 rounded-lg border border-skin-theme-body-300 bg-skin-theme-body-100 focus:outline-none'}/>
+                                        <input type="text" placeholder={'Email'} ref={emailRef}
+                                               className={'px-3 w-full h-10 rounded-lg border border-skin-theme-body-300 bg-skin-theme-body-100 focus:outline-none'}/>
                                     </m.div>
 
                                     <m.div
                                         variants={animationStore.loadOpacityWithYAngle}
                                     >
-                                    <input type="password" placeholder={'Password'}
-                                           className={'px-3 w-full h-10 rounded-lg border border-skin-theme-body-300 bg-skin-theme-body-100 focus:outline-none'}/>
+                                        <input type="password" placeholder={'Password'} ref={passwordRef}
+                                               className={'px-3 w-full h-10 rounded-lg border border-skin-theme-body-300 bg-skin-theme-body-100 focus:outline-none'}/>
                                     </m.div>
                                     <m.div
                                         variants={animationStore.loadOpacityWithYAngle}
@@ -104,10 +126,11 @@ const SignIn = () => {
                                     </m.button>
                                     <m.p
                                         variants={animationStore.loadOpacityWithXAngleShort}
-                                        className={'text-xs lgPhone:text-sm text-center'}>Dont have an account yet? <Link
-                                        href={'/signup'}
-                                        className={'font-bold text-skin-theme-400'}>Sign
-                                        up here</Link></m.p>
+                                        className={'text-xs lgPhone:text-sm text-center'}>Dont have an account
+                                        yet? <Link
+                                            href={'/signup'}
+                                            className={'font-bold text-skin-theme-400'}>Sign
+                                            up here</Link></m.p>
                                     <Link
                                         href={'/profile'}
                                         className={'font-bold text-skin-theme-400 text-xs lgPhone:text-sm text-center'}>
@@ -121,8 +144,7 @@ const SignIn = () => {
                     </div>
                 </div>
             </div>
-        </m.div>
-    </>)
+        </m.div>)
 }
 
 export default SignIn
