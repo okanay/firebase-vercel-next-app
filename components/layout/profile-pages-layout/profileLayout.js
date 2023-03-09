@@ -10,12 +10,21 @@ import {
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../../framer-motion-animations/store";
 import useMediaQuery from "../../../src/costum-hooks/useMediaQuery";
+import {useSession} from "next-auth/react";
+import {useRouter} from "next/router";
 
 const ProfileLayout = ({children}) => {
 
     const extensionNavigation = useSelector(state => state.extensionNavigation)
     const dispatch = useDispatch()
     const sideNavigationMediaQuery = useMediaQuery("768px", "close", "closePriority")
+    const {data: session, status} = useSession()
+    const router = useRouter()
+
+    if (status === "unauthenticated")
+    {
+        router.push('/signin')
+    }
 
     useEffect(() => {
 
@@ -24,7 +33,13 @@ const ProfileLayout = ({children}) => {
         }
     }, [] )
 
-    return (
+
+    if (session?.user === undefined)
+    {
+        return
+    }
+
+    return(
         <div className={'flex flex-row justify-start'}>
             <div className={`absolute tablet:static`}>
                 <button onClick={() => {
