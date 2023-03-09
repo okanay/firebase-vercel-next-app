@@ -1,15 +1,11 @@
 import ProfileLayout from "../../components/layout/profile-pages-layout/profileLayout";
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
-import {useSession} from "next-auth/react";
-import {useRouter} from "next/router";
-import {useEffect} from "react";
+import {getSession, useSession} from "next-auth/react";
 
 const ProfileIndex = () => {
 
     const {data: session, status} = useSession()
-
-
 
     return (
         <ProfileLayout>
@@ -36,3 +32,23 @@ const ProfileIndex = () => {
 }
 
 export default ProfileIndex
+
+
+export async function getServerSideProps(context) {
+
+    const session = await getSession(context);
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/signin',
+                permanent: false,
+            },
+        };
+    }
+
+    return {
+        props: {
+            session: true,
+        },
+    };
+}

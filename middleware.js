@@ -1,13 +1,8 @@
-import { withAuth } from "next-auth/middleware"
-import { getToken } from "next-auth/jwt";
+
+
 
 export async function middleware(request) {
 
-    const {pathname} = request.nextUrl;
-
-    if (pathname === "/profile")
-    {
-    }
 }
 
 

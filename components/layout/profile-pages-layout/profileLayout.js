@@ -18,26 +18,8 @@ const ProfileLayout = ({children}) => {
     const extensionNavigation = useSelector(state => state.extensionNavigation)
     const dispatch = useDispatch()
     const sideNavigationMediaQuery = useMediaQuery("768px", "close", "closePriority")
-    const {data: session, status} = useSession()
-    const router = useRouter()
-
-    if (status === "unauthenticated")
-    {
-        router.push('/signin')
-    }
-
-    useEffect(() => {
-
-        return () => {
-            dispatch(changeSideNavigationTypeToClosed())
-        }
-    }, [] )
 
 
-    if (session?.user === undefined)
-    {
-        return
-    }
 
     return(
         <div className={'flex flex-row justify-start'}>

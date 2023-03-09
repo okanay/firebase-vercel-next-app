@@ -1,6 +1,7 @@
 import ProfileLayout from "../../components/layout/profile-pages-layout/profileLayout";
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
+import {getSession} from "next-auth/react";
 
 const ProfileAccount = () => {
 
@@ -15,3 +16,22 @@ const ProfileAccount = () => {
 }
 
 export default ProfileAccount
+
+export async function getServerSideProps(context) {
+
+    const session = await getSession(context);
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/signin',
+                permanent: false,
+            },
+        };
+    }
+
+    return {
+        props: {
+            session: true,
+        },
+    };
+}

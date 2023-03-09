@@ -25,7 +25,6 @@ export const authOptions = {
     secret : process.env.JWT_SECRET
 }
 export default NextAuth(authOptions)
-
 export const SignInFetch = async (email, password) => {
 
     const response = await signInWithEmailAndPassword(auth, email, password).

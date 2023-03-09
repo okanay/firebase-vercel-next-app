@@ -2,6 +2,7 @@ import ProfileLayout from "../../components/layout/profile-pages-layout/profileL
 import ThemeSelect from "../../components/layout/app-pages-layout/themeSelect";
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
+import {getSession} from "next-auth/react";
 
 const ProfilePreferenceColorTheme = () => {
 
@@ -18,3 +19,22 @@ const ProfilePreferenceColorTheme = () => {
 }
 
 export default ProfilePreferenceColorTheme
+
+export async function getServerSideProps(context) {
+
+    const session = await getSession(context);
+    if (!session) {
+        return {
+            redirect: {
+                destination: '/signin',
+                permanent: false,
+            },
+        };
+    }
+
+    return {
+        props: {
+            session: true,
+        },
+    };
+}
