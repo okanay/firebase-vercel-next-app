@@ -10,7 +10,7 @@ const ProfileIndex = (props) => {
 
     const { data : session} = props
 
-    const [user, setUser] = useState({data: undefined, status: 'error', ok: false})
+    const [user, setUser] = useState({data: undefined, status: 'initial', ok: false})
     useGetUserData(session).then(response => {
         setUser({...response})
     })
@@ -21,8 +21,8 @@ const ProfileIndex = (props) => {
                 <h1 className={'text-3xl'}>Profile Index</h1>
                 <div className={'flex flex-col gap-1 mt-2 text-sm font-light bg-skin-theme-100/20 py-2 px-4 rounded max-w-screen-laptop'}>
                     <div className={'mb-4 text-skin-theme-font-100 font-semibold'}>
-                        <p>Fetch : <span className={'text-skin-theme-600'}>{user.ok ? "complete" : "..."}</span></p>
-                        <p>Fetch status : <span className={'text-skin-theme-600'}>{user.status === "Success!" ? "success" : user.status + ".."}</span></p>
+                        <p>Fetch : <span className={'text-skin-theme-600'}>{user.ok || user.status === "error" ? "complete" : "fetching"}</span></p>
+                        <p>Fetch status : <span className={'text-skin-theme-600'}>{user.status === "Success!" ? "success" : user.status}</span></p>
                         <p>Access Token : <span className={'text-skin-theme-600'}>{session.accessToken ? "available" : "not available"}</span></p>
                     </div>
 
