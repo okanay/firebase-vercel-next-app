@@ -1,7 +1,6 @@
 import Navigation from "./navigation";
 import Head from "next/head";
 import Theme from "./theme";
-
 const Layout = ({children}) => {
 
     return (

@@ -1,5 +1,4 @@
 import {useRef, useState} from "react";
-import Cookies from "js-cookie";
 
 import Link from "next/link";
 import Head from "next/head";
@@ -30,9 +29,7 @@ const SignIn = () => {
         const email = emailRef.current.value
         const password = passwordRef.current.value
         const rememberMe = true
-
         const result = await signIn("credentials", {email, password, redirect: false , remember : false});
-
         await setLoading(false)
 
         if (result.ok) {

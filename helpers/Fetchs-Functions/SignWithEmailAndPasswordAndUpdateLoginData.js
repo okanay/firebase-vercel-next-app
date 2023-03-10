@@ -1,11 +1,9 @@
 import {signInWithEmailAndPassword} from "firebase/auth";
 import {auth, db} from "../../src/firebase";
 import {doc, getDoc, updateDoc} from "firebase/firestore";
-
 export const SignWithEmailAndPasswordAndUpdateLoginData = async (email , password) => {
 
     let userCredentials = undefined
-    let token = undefined
 
     const sign = await signInWithEmailAndPassword(auth, email, password).
     then(response =>
@@ -32,10 +30,19 @@ export const SignWithEmailAndPasswordAndUpdateLoginData = async (email , passwor
     }).then(userData =>
     {
         const data = userData.data()
-        return {name: {name: "FireBase", ...data}, email: data.email}
+
+        const tokens = {
+            accessToken: data.accessToken,
+            refreshToken: data.refreshToken,
+            tokenExpire: data.tokenExpire,
+        }
+
+        return {name: {name: "FireBase", ...tokens}, email: data.email}
 
     }).
-    then(user => {return user}).
+    then(user => {
+         return user
+    }).
     catch(error => {return error})
 
     return sign
