@@ -9,7 +9,7 @@ export default async function handler(req, res) {
         await GetUserWithAccessToken_SQLQUERY(accessToken, collectionName).then((data) => {
 
             data.forEach(doc => {
-                res.status(200).json({data : doc.data(), status : 200})
+                res.status(200).json({data : {id: doc.id , data : doc.data()}, status : 200})
 
             })
         }).catch(error =>
