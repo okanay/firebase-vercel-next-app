@@ -7,12 +7,19 @@ const Navigation = () => {
 
     const {data: session, status} = useSession()
 
+
     return (<div className={'bg-skin-theme-body-50 px-4 py-2'}>
         <Head>
             <title>Sign Next Firebase</title>
             <meta name='description' content="Sign In, Sign Us to Next Auth - Firebase Demo"/>
         </Head>
+        <p>
+            {status}
+        </p>
+
         <div className={'flex flex-row flex-wrap justify-between w-full items-center'}>
+
+
             <Link href={'/'} className={'text-skin-theme-400 font-semibold text-lg basePhone:text-xl xlPhone:text-3xl'}>Firebase
                 Auth</Link>
             {
