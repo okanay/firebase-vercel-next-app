@@ -1,7 +1,6 @@
 import {useEffect, useState} from "react";
 import {signOut, useSession} from "next-auth/react";
 import {GetFirebaseData} from "../Fetchs-Functions/GetFirebaseData";
-import {callback} from "next-auth/core/routes";
 
 export const useGetUserWithAccessToken = () => {
 
@@ -31,6 +30,8 @@ export const useGetUserWithAccessToken = () => {
 
                     setResponse({data: undefined, status: 'error', ok: false})
                     setError(err)
+                    // signOut({callback : "/signin"})
+                    // SafeSignOutFirebaseAndNextAuth()
                 })
             }
         }
