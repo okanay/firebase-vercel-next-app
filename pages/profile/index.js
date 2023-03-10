@@ -3,14 +3,17 @@ import {getSession} from "next-auth/react";
 
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
-import {useGetUserData} from "../../helpers/costumHook/useGetUserWithAccessToken";
-
+import {CustomGetUserFetch, useGetUserData} from "../../helpers/costumHook/useGetUserWithAccessToken";
+import {useState} from "react";
 
 const ProfileIndex = (props) => {
 
-    const { data : session } = props
-    const user = useGetUserData(session.accessToken)
+    const { data : session} = props
 
+    const [user, setUser] = useState({data: undefined, status: 'error', ok: false})
+    useGetUserData(session).then(response => {
+        setUser({...response})
+    })
 
     return (
         <ProfileLayout>
@@ -41,6 +44,7 @@ export async function getServerSideProps(context) {
 
     const session = await getSession(context);
     if (session) {
+
         return {
             props: {
                 data : session.user.name,
