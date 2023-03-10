@@ -6,6 +6,7 @@ import {SafeSignOutFirebaseAndNextAuth} from "../../../helpers/Fetchs-Functions/
 const Navigation = () => {
 
     const {data: session, status} = useSession()
+
     return (<div className={'bg-skin-theme-body-50 px-4 py-2'}>
         <Head>
             <title>Sign Next Firebase</title>
@@ -15,7 +16,7 @@ const Navigation = () => {
             <Link href={'/'} className={'text-skin-theme-400 font-semibold text-lg basePhone:text-xl xlPhone:text-3xl'}>Firebase
                 Auth</Link>
             {
-                !session?.user ? (
+                status !== "authenticated" ? (
                     <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
                         <Link href={'/signin'}
                               className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
