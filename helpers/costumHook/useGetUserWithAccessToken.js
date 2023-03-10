@@ -14,7 +14,7 @@ export const useGetUserData = async (accessToken) => {
             })
         }
 
-    }, [session])
+    }, [accessToken])
 
     return user
 }
