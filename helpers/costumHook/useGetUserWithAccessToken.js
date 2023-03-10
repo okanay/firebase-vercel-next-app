@@ -1,11 +1,11 @@
 import {useEffect, useState} from "react";
-import {GetUsersWithAccessTokenFetch} from "../Fetchs-Functions/GetUsersWithAccessTokenFetch";
 import {useSession} from "next-auth/react";
+import {GetFirebaseData} from "../Fetchs-Functions/GetFirebaseData";
 
-export const useGetUserWithAccessToken = () => {
+export const useGetUserWithAccessToken = (collectionName) => {
 
-    const [response, setResponse] = useState({status : 'fetching', data : undefined})
-    const [error, setError] = useState({error : false, message : "No Error!"})
+    const [response, setResponse] = useState({data : undefined, status : 'fetching',  ok : false})
+    const [error, setError] = useState({error : false, message : ""})
     const {data: session, status} = useSession()
 
     useEffect(() => {
@@ -14,17 +14,27 @@ export const useGetUserWithAccessToken = () => {
         {
             if (session?.user?.name?.accessToken)
             {
-                GetUsersWithAccessTokenFetch(session.user.name.accessToken).
+                GetFirebaseData("/api/getUserWithAccessToken", {accessToken : session.user.name.accessToken, collectionName, whereQuery : "accessToken"}).
                 then(data =>
                 {
-                    setResponse({status: 'ok', data: data.data})
+                    setResponse({ data: data.data, status: 'Success!', ok: true})
 
                 }).catch(err => {
 
-                    setResponse({status: 'error', data: undefined})
+                    setResponse({data: undefined, status: 'error',  ok: false})
                     setError(err)
                 })
             }
+        }
+        else if(status === "unauthenticated")
+        {
+            setResponse({ data: undefined,  status: 'unauthenticated',ok: false})
+            setError({error: true, message: "User Unauthenticated!"})
+        }
+        else if(status === "loading")
+        {
+            setResponse({data: undefined, status: 'loading',  ok: false})
+            setError({error: true, message: "Session Data Loading.."})
         }
 
     }, [session, status])

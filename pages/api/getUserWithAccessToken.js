@@ -2,15 +2,15 @@ import { collection, query, where, getDocs } from "firebase/firestore";
 import {db} from "../../src/firebase";
 export default async function handler(req, res) {
 
-    const {accessToken} = req.body
+    const {accessToken, collectionName} = req.body
 
-    if (accessToken !== undefined)
+    if (accessToken !== undefined && collectionName !== undefined)
     {
-        await getUsersWithAccessToken(accessToken).then((data) => {
+        await GetUserWithAccessToken_SQLQUERY(accessToken, collectionName).then((data) => {
 
             data.forEach(doc => {
                 res.status(200).json({data : doc.data(), status : 200})
-                return;
+
             })
         }).catch(error =>
         {
@@ -23,9 +23,9 @@ export default async function handler(req, res) {
     }
 }
 
-export const getUsersWithAccessToken = async (accessToken) => {
+export const GetUserWithAccessToken_SQLQUERY = async (accessToken, collectionName) => {
 
-    const q = query(collection(db, "users"), where("accessToken", "==", accessToken));
+    const q = query(collection(db, collectionName), where("accessToken", "==", accessToken));
     const querySnapshot = await getDocs(q);
 
     return querySnapshot

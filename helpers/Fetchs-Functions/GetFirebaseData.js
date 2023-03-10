@@ -1,13 +1,13 @@
 
-export const GetUsersWithAccessTokenFetch = async (accessToken)  => {
+export const GetFirebaseData = async (url, body)  => {
 
-    const FetchData = await fetch('/api/getUserWithAccessToken', {
+    const FetchData = await fetch(url, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            accessToken,
+            ...body,
         })
     }).
     then(response =>
