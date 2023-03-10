@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Head from "next/head";
-import {useSession} from "next-auth/react";
+import {signOut, useSession} from "next-auth/react";
 import {SafeSignOutFirebaseAndNextAuth} from "../../../helpers/Fetchs-Functions/SafeSignOutFirebaseAndNextAuth";
 
 const Navigation = () => {
@@ -53,7 +53,7 @@ const Navigation = () => {
                 ) : (
                     <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
                         <button onClick={() => {
-                            SafeSignOutFirebaseAndNextAuth()
+                            signOut({callbackUrl : "/signin"})
                         }}
                                 className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
                             Out

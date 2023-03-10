@@ -6,8 +6,38 @@ import {Provider} from "react-redux";
 import store from "../src/app/store";
 import {AnimatePresence, motion} from "framer-motion";
 import {SessionProvider} from "next-auth/react";
+import {useRouter} from "next/router";
+import {useEffect, useState} from "react";
+import {Loading} from "../components/Loading";
+
 
 function MyApp({Component, pageProps: {session, ...pageProps},}) {
+
+    const LoadingRouter = () => {
+        const router = useRouter()
+        const [loading, setLoading] = useState(false)
+
+        useEffect(() => {
+
+            const handleStart = (url) => (url !== router.pathname) && setLoading(true)
+            const handleComplete = (url) => (url === router.pathname) && setTimeout(() => {setLoading(false)}, 500)
+
+            router.events.on('routeChangeStart', handleStart)
+            router.events.on('routeChangeComplete', handleComplete)
+            router.events.on('routeChangeError', handleComplete)
+
+            return () => {
+
+                router.events.off('routeChangeStart', handleStart)
+                router.events.off('routeChangeComplete', handleComplete)
+                router.events.off('routeChangeError', handleComplete)
+
+            }
+
+        }, [])
+
+        return loading && <Loading/>
+    }
 
     return (
         <AnimatePresence mode='wait'>
@@ -39,6 +69,7 @@ function MyApp({Component, pageProps: {session, ...pageProps},}) {
                 </Head>
                 <SessionProvider session={session}>
                     <Layout>
+                        <LoadingRouter/>
                         <Component {...pageProps} />
                     </Layout>
                 </SessionProvider>
@@ -49,3 +80,5 @@ function MyApp({Component, pageProps: {session, ...pageProps},}) {
 }
 
 export default MyApp
+
+
