@@ -4,6 +4,8 @@ import {GetFirebaseData} from "../Fetchs-Functions/GetFirebaseData";
 
 export const useGetUserWithAccessToken = () => {
 
+
+
     const [response, setResponse] = useState({data: undefined, status: 'fetching', ok: false})
     const [error, setError] = useState({error: false, message: ""})
     const {data: session, status} = useSession()
