@@ -27,6 +27,8 @@ const ProfileIndex = () => {
                         <div className={'space-y-0.5 text-skin-theme-font-100 font-semibold'}>
                             <p className={'truncate flex flex-row gap-2'}>accessToken : <span className={'text-skin-theme-600'}>{user.data.data.accessToken}</span></p>
                             <p className={'truncate flex flex-row gap-2'}>refreshToken :  <span className={'text-skin-theme-600'}>{user.data.data.refreshToken}</span></p>
+                            <p className={'truncate flex flex-row gap-2'}>id :  <span className={'text-skin-theme-600'}>{user.data.id}</span></p>
+
                         </div>
                     )}
                 </div>

@@ -1,12 +1,12 @@
 import Link from "next/link";
-import {useSelector} from "react-redux";
 import Head from "next/head";
-import {signOut, useSession} from "next-auth/react";
+import {useSession} from "next-auth/react";
+import {SafeSignOutFirebaseAndNextAuth} from "../../../helpers/Fetchs-Functions/SafeSignOutFirebaseAndNextAuth";
 
 const Navigation = () => {
 
-    const theme = useSelector(state => state.theme.value)
     const {data: session, status} = useSession()
+
 
     return (<div className={'bg-skin-theme-body-50 px-4 py-2'}>
         <Head>
@@ -28,9 +28,7 @@ const Navigation = () => {
                     </div>
                 ) : (
                     <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
-                        <button onClick={() => {
-                            signOut({callbackUrl : "/signin"})
-                        }}
+                        <button onClick={SafeSignOutFirebaseAndNextAuth}
                                 className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
                             Out
                         </button>

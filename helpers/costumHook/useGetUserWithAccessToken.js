@@ -2,7 +2,7 @@ import {useEffect, useState} from "react";
 import {signOut, useSession} from "next-auth/react";
 import {GetFirebaseData} from "../Fetchs-Functions/GetFirebaseData";
 
-export const useGetUserWithAccessToken = (collectionName) => {
+export const useGetUserWithAccessToken = () => {
 
     const [response, setResponse] = useState({data: undefined, status: 'fetching', ok: false})
     const [error, setError] = useState({error: false, message: ""})
@@ -15,7 +15,7 @@ export const useGetUserWithAccessToken = (collectionName) => {
             {
                 GetFirebaseData("/api/getUserWithAccessToken", {
                     accessToken: session.user.name.accessToken,
-                    collectionName,
+                    collectionName : "users",
                     whereQuery: "accessToken"
                 }).then(data => {
 
