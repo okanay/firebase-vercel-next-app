@@ -7,7 +7,8 @@ export const useGetUserWithAccessToken = (session, status) => {
     const [response, setResponse] = useState({data: undefined, status: 'fetching', ok: false})
     const [error, setError] = useState({error: false, message: ""})
 
-    console.log("CustomHook : Session Data => " + session)
+    console.log({ message : 'Custom Hook session : ', session : session})
+
 
     useEffect(() => {
         console.log('CustomHook : Effect Start')
@@ -40,6 +41,7 @@ export const useGetUserWithAccessToken = (session, status) => {
             }
             else{
                 console.log('CustomHook : if 1 : else 1')
+                return
             }
         }
         else if (status === "unauthenticated")
