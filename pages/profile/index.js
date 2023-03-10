@@ -7,24 +7,21 @@ import {GetUserWithAccessToken} from "../../helpers/costumHook/useGetUserWithAcc
 import {useEffect, useState} from "react";
 import {useGetUserWithAccessToken} from "../../helpers/costumHook/useGetFirebaseAuth";
 
-const ProfileIndex = () => {
+const ProfileIndex = (props) => {
 
     const [user, setUser] = useState({})
-    const {data: session, status} = useSession()
-    const [response, error] = useGetUserWithAccessToken()
-
-    console.log(response)
+    const { data : session } = props
 
     useEffect(() => {
 
-        if (session.user?.name.accessToken !== undefined)
+        if (session.accessToken !== undefined)
         {
-            GetUserWithAccessToken(session,status).then(response => {
+            GetUserWithAccessToken(session).then(response => {
                 setUser({...response})
             })
         }
 
-    }, [status,session, response])
+    }, [session])
 
 
     return (
@@ -33,11 +30,9 @@ const ProfileIndex = () => {
                 <h1 className={'text-3xl'}>Profile Index</h1>
                 <div className={'flex flex-col gap-1 mt-2 text-sm font-light bg-skin-theme-100/20 py-2 px-4 rounded max-w-screen-laptop'}>
                     <div className={'mb-4 text-skin-theme-font-100 font-semibold'}>
-                        <p>Fetch : <span className={'text-skin-theme-600'}>{user.ok ? "complete" : "try to fetch.."}</span></p>
-                        <p>Fetch status : <span className={'text-skin-theme-600'}>{user.status === "Success!" ? "Success" : user.status + ".."}</span></p>
-                        <p>Next Auth Status : <span className={'text-skin-theme-600'}>{status}</span></p>
-                        <p>Session AccessToken : <span className={'text-skin-theme-600'}>{session.user?.name.accessToken ? "active " : "null"}</span></p>
-
+                        <p>Fetch : <span className={'text-skin-theme-600'}>{user.ok ? "complete" : "..."}</span></p>
+                        <p>Fetch status : <span className={'text-skin-theme-600'}>{user.status === "Success!" ? "success" : user.status + ".."}</span></p>
+                        <p>Access Token : <span className={'text-skin-theme-600'}>{session.accessToken ? "available" : "not available"}</span></p>
                     </div>
 
                     {user.ok && (
@@ -54,23 +49,20 @@ const ProfileIndex = () => {
 }
 
 export default ProfileIndex
-
-
 export async function getServerSideProps(context) {
 
     const session = await getSession(context);
-    if (!session) {
+    if (session) {
+        return {
+            props: {
+                data : session.user.name,
+            },
+        };
+    }
         return {
             redirect: {
                 destination: '/signin',
                 permanent: false,
             },
         };
-    }
-
-    return {
-        props: {
-            session: true,
-        },
-    };
 }

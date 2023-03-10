@@ -1,10 +1,10 @@
 import { useState} from "react";
 import {GetFirebaseData} from "../Fetchs-Functions/GetFirebaseData";
 
-export const GetUserWithAccessToken = async (session, status) => {
+export const GetUserWithAccessToken = async (session) => {
 
     const data = await GetFirebaseData("/api/getUserWithAccessToken", {
-            accessToken: session.user.name.accessToken,
+            accessToken: session.accessToken,
             collectionName : "users",
             whereQuery: "accessToken"
         }).then(data => {
