@@ -7,10 +7,12 @@ export const useGetUserWithAccessToken = (session, status) => {
     const [response, setResponse] = useState({data: undefined, status: 'fetching', ok: false})
     const [error, setError] = useState({error: false, message: ""})
 
+    console.log("CustomHook : Session Data => " + session)
+
     useEffect(() => {
-        console.log('costumHook Effect')
+        console.log('CustomHook : Effect Start')
         if (status === "authenticated") {
-            console.log('costumHook 1')
+            console.log('CustomHook : if 1')
             if (session?.user?.name?.accessToken)
             {
                 console.log('costumHook 2')
@@ -36,22 +38,28 @@ export const useGetUserWithAccessToken = (session, status) => {
                     // SafeSignOutFirebaseAndNextAuth()
                 })
             }
+            else{
+                console.log('CustomHook : if 1 : else 1')
+            }
         }
         else if (status === "unauthenticated")
         {
-            console.log('costumHook 6')
+            console.log('CustomHook : else if 1')
             setResponse({data: undefined, status: 'unauthenticated', ok: false})
             setError({error: true, message: "User Unauthenticated!"})
         }
         else if (status === "loading")
         {
-            console.log('costumHook 7')
+            console.log('CustomHook : else if 2')
             setResponse({data: undefined, status: 'loading', ok: false})
             setError({error: true, message: "Session Data Loading.."})
         }
 
     }, [session, status])
 
-    console.log('costumHook 8')
+    console.log({ message : 'Custom Hook status : ', status : status})
+    console.log({ message : 'Custom Hook session : ', session : session})
+    console.log({ message : 'Custom Hook session.user : ', session : session.user})
+    console.log('Return Custom Hook : ')
     return [response, error]
 }

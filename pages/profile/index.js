@@ -12,13 +12,15 @@ const ProfileIndex = () => {
     const {data: session, status} = useSession()
     const [user, error] = useGetUserWithAccessToken(session,status)
 
-    console.log(status)
-    console.log(session)
-    console.log(error)
-    console.log(user)
+    console.log({ message : 'Profile Page status : ', status : status})
+    console.log({ message : 'Profile Page session : ', session : session})
+    console.log({ message : 'Profile Page session.user : ', session : session.user})
+    console.log({ message : 'Profile Page error : ', error : error})
+    console.log({ message : 'Profile Page user : ', user : user})
+
 
     useEffect(() => {
-        console.log('effect')
+        console.log('Profile Page Effect : ')
     }, [status,session])
 
     return (
