@@ -8,12 +8,16 @@ export const SignInErrors = (message) => {
             return "Your password must be a minimum of 6 digits!"
             break;
         case "auth/internal-error":
-            return "A system error occurred while Sign Up."
+            return "A system error occurred while Sign In."
             break
         case "auth/wrong-password":
             return "You entered an invalid password!"
             break
+        case "auth/user-not-found":
+            return "Registered email address not found"
+        case "undefined":
+            return "A system error occurred while Sign In."
         default:
-       return "Something Wrong : " + message
+       return "A system error occurred while Sign In. : " + message
     }
 }

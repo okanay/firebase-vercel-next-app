@@ -26,7 +26,9 @@ export default async function handler(req, res) {
 export const GetUserWithAccessToken_SQLQUERY = async (accessToken, collectionName) => {
 
     const q = query(collection(db, collectionName), where("accessToken", "==", accessToken));
-    const querySnapshot = await getDocs(q);
-
-    return querySnapshot
+    getDocs(q).then(data => {
+        return data
+    }).catch((error) => {
+        return error
+    });
 }

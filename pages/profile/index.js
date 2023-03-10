@@ -17,16 +17,15 @@ const ProfileIndex = () => {
 
                     <div className={'mb-4'}>
                         <p>accessTokenFetchOk : {user.ok ? "true" : "false"}</p>
-                        <p>accessTokenFetchStatus : {user.status ? "true" : "false"}</p>
-
+                        <p>accessTokenFetchStatus : {user.status === "Success!" ? "Success" : user.status}</p>
                     </div>
 
                     {user.ok && (
-                           <div className={'space-y-0.5 text-skin-theme-font-400 font-semibold'}>
-                               <p className={'truncate flex flex-row gap-2'}>accessToken <span>{user.data.accessToken}</span></p>
-                               <p className={'truncate flex flex-row gap-2'}>refreshToken <span>{user.data.refreshToken}</span></p>
-                               <p className={'truncate flex flex-row gap-2'}>tokenExpire <span>{user.data.tokenExpire}</span></p>
-                           </div>
+                        <div className={'space-y-0.5 text-skin-theme-font-400 font-semibold'}>
+                            <p className={'truncate flex flex-row gap-2'}>accessToken <span>{user.data.accessToken}</span></p>
+                            <p className={'truncate flex flex-row gap-2'}>refreshToken <span>{user.data.refreshToken}</span></p>
+                            <p className={'truncate flex flex-row gap-2'}>tokenExpire <span>{user.data.tokenExpire}</span></p>
+                        </div>
                     )}
                 </div>
             </m.div>
