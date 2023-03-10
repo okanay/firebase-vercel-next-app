@@ -32,6 +32,8 @@ const ProfileIndex = () => {
                         <p>Fetch : <span className={'text-skin-theme-600'}>{user.ok ? "complete" : "try to fetch.."}</span></p>
                         <p>Fetch status : <span className={'text-skin-theme-600'}>{user.status === "Success!" ? "Success" : user.status + ".."}</span></p>
                         <p>Next Auth Status : <span className={'text-skin-theme-600'}>{status}</span></p>
+                        <p>Session AccessToken : <span className={'text-skin-theme-600'}>{session.user?.name.accessToken ? "active " : "null"}</span></p>
+
                     </div>
 
                     {user.ok && (
