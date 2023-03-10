@@ -6,8 +6,6 @@ import {SafeSignOutFirebaseAndNextAuth} from "../../../helpers/Fetchs-Functions/
 const Navigation = () => {
 
     const {data: session, status} = useSession()
-
-
     return (<div className={'bg-skin-theme-body-50 px-4 py-2'}>
         <Head>
             <title>Sign Next Firebase</title>

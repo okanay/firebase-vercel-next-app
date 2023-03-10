@@ -9,9 +9,7 @@ import {useEffect, useState} from "react";
 const ProfileIndex = () => {
 
     const [user, error] = useGetUserWithAccessToken("users")
-    const [date , setDate] = useState('')
-
-
+    
     return (
         <ProfileLayout>
             <m.div variants={animationStore.main} initial='initial' animate='animate' exit={'exit'}>
