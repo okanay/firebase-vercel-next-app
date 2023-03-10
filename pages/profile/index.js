@@ -5,11 +5,15 @@ import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
 import {GetUserWithAccessToken} from "../../helpers/costumHook/useGetUserWithAccessToken";
 import {useEffect, useState} from "react";
+import {useGetUserWithAccessToken} from "../../helpers/costumHook/useGetFirebaseAuth";
 
 const ProfileIndex = () => {
 
     const [user, setUser] = useState({})
     const {data: session, status} = useSession()
+    const [response, error] = useGetUserWithAccessToken()
+
+    console.log(response)
 
     useEffect(() => {
 
@@ -20,7 +24,7 @@ const ProfileIndex = () => {
             })
         }
 
-    }, [status,session])
+    }, [status,session, response])
 
 
     return (
