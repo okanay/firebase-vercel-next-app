@@ -2,13 +2,10 @@ import {useEffect, useState} from "react";
 import {signOut, useSession} from "next-auth/react";
 import {GetFirebaseData} from "../Fetchs-Functions/GetFirebaseData";
 
-export const useGetUserWithAccessToken = () => {
-
-
+export const useGetUserWithAccessToken = (session, status) => {
 
     const [response, setResponse] = useState({data: undefined, status: 'fetching', ok: false})
     const [error, setError] = useState({error: false, message: ""})
-    const {data: session, status} = useSession()
 
     useEffect(() => {
 

@@ -8,18 +8,18 @@ import {useEffect} from "react";
 
 const ProfileIndex = () => {
 
-    const [user, error] = useGetUserWithAccessToken("users")
+
     const {data: session, status} = useSession()
+    const [user, error] = useGetUserWithAccessToken(session,status)
 
-    useEffect(() => {
-        console.log(1)
-
-        return () => {
-            console.log('2')
-        }
-    }, [])
+    console.log(status)
+    console.log(session)
     console.log(error)
     console.log(user)
+
+    useEffect(() => {
+        console.log('effect')
+    }, [status,session])
 
     return (
         <ProfileLayout>
