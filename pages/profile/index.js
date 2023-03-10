@@ -1,7 +1,8 @@
 import ProfileLayout from "../../components/layout/profile-pages-layout/profileLayout";
+import {getSession, useSession} from "next-auth/react";
+
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
-import {getSession, useSession} from "next-auth/react";
 
 const ProfileIndex = () => {
 
