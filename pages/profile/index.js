@@ -1,27 +1,15 @@
 import ProfileLayout from "../../components/layout/profile-pages-layout/profileLayout";
-import {getSession, useSession} from "next-auth/react";
+import {getSession} from "next-auth/react";
 
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
-import {GetUserWithAccessToken} from "../../helpers/costumHook/useGetUserWithAccessToken";
-import {useEffect, useState} from "react";
-import {useGetUserWithAccessToken} from "../../helpers/costumHook/useGetFirebaseAuth";
+import {useGetUserData} from "../../helpers/costumHook/useGetUserWithAccessToken";
+
 
 const ProfileIndex = (props) => {
 
-    const [user, setUser] = useState({})
     const { data : session } = props
-
-    useEffect(() => {
-
-        if (session.accessToken !== undefined)
-        {
-            GetUserWithAccessToken(session).then(response => {
-                setUser({...response})
-            })
-        }
-
-    }, [session])
+    const user = useGetUserData(session.accessToken)
 
 
     return (

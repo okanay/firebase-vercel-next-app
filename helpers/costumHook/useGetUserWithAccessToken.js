@@ -1,26 +1,43 @@
-import { useState} from "react";
+import {useEffect, useState} from "react";
 import {GetFirebaseData} from "../Fetchs-Functions/GetFirebaseData";
 
-export const GetUserWithAccessToken = async (session) => {
+export const useGetUserData = async (accessToken) => {
 
-    const data = await GetFirebaseData("/api/getUserWithAccessToken", {
-            accessToken: session.accessToken,
-            collectionName : "users",
-            whereQuery: "accessToken"
-        }).then(data => {
-            if (data.data === undefined)
-            {
-                throw new Error('No Data Found')
-            }
+    const [user, setUser] = useState({})
 
-            const response = {data: data.data, status: 'Success', ok: true}
-            return response
+    useEffect(() => {
 
-        }).catch(err => {
+        if (accessToken !== undefined)
+        {
+            CustomFetch(accessToken).then(response => {
+                setUser({...response})
+            })
+        }
 
-            const response = {data: undefined, status: 'error', ok: false}
-            return response
-        })
+    }, [session])
+
+    return user
+}
+
+const CustomFetch = async (accessToken) => {
+
+    const data = GetFirebaseData("/api/getUserWithAccessToken", {
+        accessToken,
+        collectionName : "users",
+        whereQuery: "accessToken"
+    }).then(data => {
+        if (data.data === undefined)
+        {
+            throw new Error('No Data Found')
+        }
+
+        return {data: data.data, status: 'success', ok: true}
+
+    }).catch(err => {
+
+        return {data: undefined, status: 'error', ok: false}
+    })
 
     return data
+
 }
