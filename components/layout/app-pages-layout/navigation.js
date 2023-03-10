@@ -7,15 +7,10 @@ const Navigation = () => {
 
     const {data: session, status} = useSession()
 
-
-    return (<div className={'bg-skin-theme-body-50 px-4 py-2'}>
-        <Head>
-            <title>Sign Next Firebase</title>
-            <meta name='description' content="Sign In, Sign Us to Next Auth - Firebase Demo"/>
-        </Head>
-
-        {status === "loading" && (
-            <div className={'absolute z-[100] top-0 right-0 w-full h-full bg-skin-theme-body-50 flex flex-col justify-center'}>
+    if (status === 'loading') {
+        return (
+            <div
+                className={'absolute z-[100] top-0 right-0 w-full h-full bg-skin-theme-body-50 flex flex-col justify-center'}>
                 <div className={'flex flex-row justify-center gap-4 items-center w-full'}>
                     <h1 className={'text-4xl font-semibold'}>Loading...</h1>
                     <svg aria-hidden="true"
@@ -30,7 +25,15 @@ const Navigation = () => {
                     </svg>
                 </div>
             </div>
-        )}
+        )
+    }
+
+    return (<div className={'bg-skin-theme-body-50 px-4 py-2'}>
+        <Head>
+            <title>Sign Next Firebase</title>
+            <meta name='description' content="Sign In, Sign Us to Next Auth - Firebase Demo"/>
+        </Head>
+
 
         <div className={'flex flex-row flex-wrap justify-between w-full items-center'}>
 
@@ -49,7 +52,9 @@ const Navigation = () => {
                     </div>
                 ) : (
                     <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
-                        <button onClick={() => {SafeSignOutFirebaseAndNextAuth()}}
+                        <button onClick={() => {
+                            SafeSignOutFirebaseAndNextAuth()
+                        }}
                                 className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
                             Out
                         </button>
