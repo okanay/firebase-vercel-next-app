@@ -1,7 +1,14 @@
 import Link from "next/link";
 import {signOut, useSession} from "next-auth/react";
+import {useDispatch} from "react-redux";
+import {reduxSignOut} from "../../../src/redux-features/user/userSlice";
 
 const Navigation = () => {
+
+    const dispatch = useDispatch()
+    const signOutHandle = () => {
+        dispatch(reduxSignOut())
+    }
 
     const {data: session, status} = useSession()
     if (status === 'loading') {
@@ -42,9 +49,7 @@ const Navigation = () => {
                     </div>
                 ) : (
                     <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
-                        <button onClick={() => {
-                            signOut({callbackUrl: "/signin"})
-                        }}
+                        <button onClick={signOutHandle}
                                 className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
                             Out
                         </button>

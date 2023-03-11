@@ -14,7 +14,7 @@ export const userSlice = createSlice({
         },
         reduxSignOut: (state, action) => {
             state.value.user = {}
-            signOut()
+            signOut({callbackUrl : "/signin"})
         }
     },
 })
