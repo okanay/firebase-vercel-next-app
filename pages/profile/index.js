@@ -1,34 +1,17 @@
 import ProfileLayout from "../../components/layout/profile-pages-layout/profileLayout";
-import {getSession, signOut} from "next-auth/react";
-
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
 import {useGetUserData} from "../../src/costum-hooks/useGetUserData";
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {useRouter} from "next/router";
-import {reduxSignIn, reduxSignOut} from "../../src/redux-features/user/userSlice";
+import { useSelector} from "react-redux";
 
-const ProfileIndex = (props) => {
+import {useErrorSignOutEffect} from "../../src/costum-hooks/useErrorSignOutEffect";
 
-    const dispatch = useDispatch()
-    const router = useRouter();
+const ProfileIndex = () => {
+
     const reduxSession = useSelector(state => state.user.value)
     const [fetchData, isLoading] = useGetUserData(reduxSession.user.accessToken)
+    useErrorSignOutEffect(isLoading,fetchData)
 
-    useEffect(() => {
-
-        if (isLoading !== undefined) {
-            if (isLoading === false) {
-               if(fetchData.status === "error" && !fetchData.ok)
-               {
-                   dispatch(reduxSignOut())
-               }
-            }
-        }
-
-
-    }, [fetchData, isLoading])
 
     return (
         <ProfileLayout>

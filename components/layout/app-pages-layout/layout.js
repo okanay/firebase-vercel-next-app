@@ -37,7 +37,6 @@ const Layout = ({children}) => {
         <Theme>
             <div className={'max-w-screen-desktop mx-auto'}>
                 <Navigation/>
-                <LoadingRouter/>
                 {children}
             </div>
         </Theme>

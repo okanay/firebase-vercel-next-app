@@ -3,7 +3,7 @@ import {reduxSignIn} from "../redux-features/user/userSlice";
 import {useRouter} from "next/router";
 import {useDispatch, useSelector} from "react-redux";
 
-export const useSetReduxUser = (session, status) => {
+export const useSetReduxSessionEffect = (session, status) => {
 
     const router = useRouter()
     const dispatch = useDispatch()

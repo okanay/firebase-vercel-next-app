@@ -1,18 +1,19 @@
 import Link from "next/link";
-import {useSelector} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../../framer-motion-animations/store";
 import useMediaQuery from "../../../src/costum-hooks/useMediaQuery";
 import {useSession} from "next-auth/react";
-import {useSetReduxUser} from "../../../src/costum-hooks/useSetReduxUser";
+import {useSetReduxSessionEffect} from "../../../src/costum-hooks/useSetReduxSessionEffect";
 import {changeExtensionState, changeSideNavigationSelectedTypeOpposite, changeSideNavigationTypeToOpened,} from "../../../src/redux-features/extensionNavigation/extensionNavigationSlicer";
 
 const ProfileLayout = ({children}) => {
 
+    const dispatch = useDispatch();
     const {data:  session, status} = useSession()
     const sideNavigationMediaQuery = useMediaQuery("768px", "close", "closePriority")
     const extensionNavigation = useSelector(state => state.extensionNavigation)
-    useSetReduxUser(session,status)
+    useSetReduxSessionEffect(session,status)
 
 
     return(
