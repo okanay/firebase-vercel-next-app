@@ -123,7 +123,7 @@ const ProfileLayout = ({children}) => {
                                 <ul id="dropdown-example"
                                     className={`${extensionNavigation.value.extensionNavigationBars[1].value} py-2 space-y-2`}>
                                     <li>
-                                        <Link href="/profile/color-theme"
+                                        <Link href="/profile/colorTheme"
                                               className="flex items-center w-full p-2 pl-11 text-base font-normal text-skin-theme-font-50 transition duration-75 rounded-lg group hover:bg-skin-theme-body-100">Color
                                             Theme</Link>
                                     </li>

@@ -6,7 +6,7 @@ export const Loading = () => {
 
     return (
         <div
-            className={'absolute z-[100] top-0 right-0 w-full h-full bg-skin-theme-body-50 flex flex-col justify-center'}>
+            className={'absolute z-[100] top-0 right-0 w-full h-full bg-skin-theme-body-50/50 flex flex-col justify-center'}>
             <div className={'flex flex-row justify-center gap-4 items-center w-full'}>
                 <h1 className={'text-4xl font-semibold'}>Loading...</h1>
                 <svg aria-hidden="true"
