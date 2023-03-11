@@ -22,7 +22,7 @@ const ProfileLayout = ({children}) => {
 
 
     return(
-        <div className={'flex flex-row justify-start'}>
+        <div className={'flex flex-row justify-start max-w-screen-desktop mx-auto'}>
             <div className={`absolute tablet:static`}>
                 <button onClick={() => {
                     dispatch(changeSideNavigationSelectedTypeOpposite())

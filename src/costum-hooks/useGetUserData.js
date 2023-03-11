@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {GetFirebaseData} from "../../helpers/Fetchs-Functions/GetFirebaseData";
+import {GetFirebaseData} from "../../helpers/fetchs-functions/GetFirebaseData";
 
 export const useGetUserData = async (session) => {
 
