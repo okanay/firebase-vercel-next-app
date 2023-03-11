@@ -11,17 +11,17 @@ const ProfileIndex = () => {
     const [fetchData, isLoading] = useGetUserData(reduxSession.user.accessToken)
     useErrorSignOutEffect(isLoading, fetchData)
 
-    return <>{isLoading === true ? <div className={'h-full flex flex-col justify-start gap-4 py-2 px-4'}>
+    return <>
+        <h1 className={'text-3xl mb-2'}>Dashboard</h1>
+        {isLoading === true ? <div className={'h-full flex flex-col justify-start gap-4 py-2 px-4'}>
 
         <div className={'w-full h-12 bg-skin-theme-body-100 animate-pulse'}/>
         <div className={'w-full h-24 bg-skin-theme-body-100 animate-pulse'}/>
 
     </div> : (
-        <m.div variants={animationStore.main} initial='initial' animate='animate' exit={'exit'} className={''}>
-            <h1 className={'text-3xl'}>Profile Index</h1>
-            <div
+        <m.div variants={animationStore.main} initial='initial' animate='animate' exit={'exit'} className={''}><div
                 className={'flex flex-col gap-1 text-sm font-light bg-skin-theme-100/20 px-4 rounded'}>
-                <div className={'mt-4 text-skin-theme-font-100 font-semibold'}>
+                <div className={'my-4 text-skin-theme-font-100 font-semibold'}>
                     <p>Fetch status : <span
                         className={'text-skin-theme-600'}>{fetchData?.status === "Success!" ? "success" : fetchData.status}</span>
                     </p>
@@ -34,7 +34,7 @@ const ProfileIndex = () => {
             </div>
 
             {fetchData.ok && (
-                <div className={'text-skin-theme-font-100 font-semibold mt-4 flex flex-col gap-1 text-sm font-light bg-skin-theme-100/20 px-4 rounded p-4'}>
+                <div className={'text-skin-theme-font-100 font-semibold mt-4 flex flex-col gap-1 text-sm font-light bg-skin-theme-100/20 px-4 rounded px-4 pb-4 pt-5'}>
                     <p className={'truncate flex flex-row gap-2'}>accessToken : <span
                         className={'text-skin-theme-600'}>{fetchData.data.data.accessToken ? "useable" : "not useable"}</span>
                     </p>

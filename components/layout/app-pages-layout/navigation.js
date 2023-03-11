@@ -35,11 +35,11 @@ const Navigation = () => {
         <div className={'flex flex-row flex-wrap justify-between w-full items-center'}>
 
 
-            <Link href={'/'} className={'text-skin-theme-400 font-semibold text-lg basePhone:text-xl xlPhone:text-3xl'}>Firebase
+            <Link href={'/'} className={'text-skin-theme-400 font-semibold text-xl xlPhone:text-2xl'}>Firebase
                 Auth</Link>
             {
                 status !== "authenticated" ? (
-                    <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
+                    <div className={'flex flex-row gap-3 items-center text-xs xlPhone:text-sm font-semibold'}>
                         <Link href={'/signin'}
                               className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
                             In</Link>
@@ -48,7 +48,7 @@ const Navigation = () => {
                             Up</Link>
                     </div>
                 ) : (
-                    <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
+                    <div className={'flex flex-row gap-3 items-center text-xs xlPhone:text-sm font-semibold'}>
                         <button onClick={signOutHandle}
                                 className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
                             Out

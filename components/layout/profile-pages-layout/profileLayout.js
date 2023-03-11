@@ -135,7 +135,7 @@ const ProfileLayout = ({children}) => {
             </m.div>
             <div onClick={() => {
                 dispatch(changeSideNavigationTypeToOpened())
-            }} className={'truncate w-full py-4 mt-8 tablet:mt-2 px-5 h-[100vh]'}>
+            }} className={'truncate w-full py-4 mt-8 tablet:mt-0 px-5 h-[100vh]'}>
                 {children}
             </div>
         </div>
