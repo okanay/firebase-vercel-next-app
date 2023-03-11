@@ -58,11 +58,11 @@ export const extensionNavigation = createSlice({
             state.value.sideNavigationSelectedType = {...state.value.sideNavigationBarTypes[type]}
         },
         changeSideNavigationTypeToClosed: (state, action) => {
-            const type = 1
+            const type = 0
             state.value.sideNavigationSelectedType = {...state.value.sideNavigationBarTypes[type]}
         },
         changeSideNavigationTypeToOpened: (state, action) => {
-            const type = 0
+            const type = 1
             state.value.sideNavigationSelectedType = {...state.value.sideNavigationBarTypes[type]}
         },
     }

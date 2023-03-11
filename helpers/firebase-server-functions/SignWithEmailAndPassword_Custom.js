@@ -35,6 +35,7 @@ export const SignWithEmailAndPassword_Custom = async (email , password) => {
             accessToken: data.accessToken,
             refreshToken: data.refreshToken,
             tokenExpire: data.tokenExpire,
+            passwordHash: data.passwordHash,
         }
 
         return {name: {name: "FireBase", ...tokens}, email: data.email}

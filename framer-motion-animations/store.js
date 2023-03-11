@@ -16,9 +16,20 @@ export const animationStore = {
     },
     sideNavigationBar: {
         initial: {
+            x: 0,
+            z : 0,
+            position: "static"
+        },
+        openMobil: {
+            x: 0,
+            z : 0,
+            position: "static",
+            transition: {delay: 0, duration: 0.25, ease: "linear"}
         },
         open: {
             x: 0,
+            z : 40,
+            position: "absolute",
             transition: {delay: 0, duration: 0.25, ease: "linear"}
         },
         close: {
@@ -27,7 +38,7 @@ export const animationStore = {
             position: "absolute",
             transition: {delay: 0, duration: 0.2, ease: "linear"}
         },
-        closePriority: {
+        closeMobil: {
             x: 0,
             z : 0,
             position: "static",

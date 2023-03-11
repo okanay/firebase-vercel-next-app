@@ -10,7 +10,6 @@ const ProfilePage = () => {
     const router = useRouter()
     const pathName = router.query.page
 
-
     return <ProfileLayout>
         <m.div variants={animationStore.main} initial='initial' animate='animate' exit={'exit'}>
             <ProfileComponentSelector pathname={pathName}/>

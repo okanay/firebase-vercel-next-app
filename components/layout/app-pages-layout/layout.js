@@ -3,6 +3,7 @@ import Theme from "./theme";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";
 import {Loading} from "./loading";
+
 const Layout = ({children}) => {
 
     const LoadingRouter = () => {
@@ -13,7 +14,9 @@ const Layout = ({children}) => {
         useEffect(() => {
 
             const handleStart = (url) => (url !== router.pathname) && setLoading(true)
-            const handleComplete = (url) => (url === router.pathname) && setTimeout(() => {setLoading(false)}, 500)
+            const handleComplete = (url) => (url === router.pathname) && setTimeout(() => {
+                setLoading(false)
+            }, 500)
 
             router.events.on('routeChangeStart', handleStart)
             router.events.on('routeChangeComplete', handleComplete)
@@ -33,14 +36,14 @@ const Layout = ({children}) => {
     }
 
     return (
-
-        <Theme>
-            <div className={'max-w-screen-desktop mx-auto'}>
+        <div className={'max-w-screen-desktop mx-auto'}>
+            <Theme>
                 <Navigation/>
                 {/*<LoadingRouter/>*/}
                 {children}
-            </div>
-        </Theme>
+            </Theme>
+        </div>
+
     )
 }
 

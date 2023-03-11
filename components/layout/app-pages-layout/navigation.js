@@ -31,7 +31,7 @@ const Navigation = () => {
             </div>
         )
     }
-    return (<div className={'bg-skin-theme-body-50 py-2'}>
+    return (<div className={'bg-skin-theme-body-50 p-4'}>
         <div className={'flex flex-row flex-wrap justify-between w-full items-center'}>
 
 

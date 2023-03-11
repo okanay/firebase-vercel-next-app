@@ -1,6 +1,7 @@
 import ColorTheme from "./colorTheme";
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
+import ProfileIndex from "./index";
 
 const ProfileComponentSelector = ({pathname}) => {
 
@@ -10,8 +11,13 @@ const ProfileComponentSelector = ({pathname}) => {
                 <m.div variants={animationStore.main} initial='initial' animate='animate' exit={'exit'}>
                     <ColorTheme/>
                 </m.div>)
+        case "dashboard":
+            return (
+                <m.div variants={animationStore.main} initial='initial' animate='animate' exit={'exit'}>
+                    <ProfileIndex/>
+                </m.div>)
         default:
-            return <><p>...</p></>
+            return <><p>..</p></>
     }
 }
 

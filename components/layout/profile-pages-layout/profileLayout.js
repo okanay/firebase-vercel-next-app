@@ -5,26 +5,32 @@ import {animationStore} from "../../../framer-motion-animations/store";
 import useMediaQuery from "../../../src/costum-hooks/useMediaQuery";
 import {useSession} from "next-auth/react";
 import {useSetReduxSessionEffect} from "../../../src/costum-hooks/useSetReduxSessionEffect";
-import {changeExtensionState, changeSideNavigationSelectedTypeOpposite, changeSideNavigationTypeToOpened,} from "../../../src/redux-features/extensionNavigation/extensionNavigationSlicer";
+import {
+    changeSideNavigationSelectedTypeOpposite,
+    changeSideNavigationTypeToClosed,
+    changeSideNavigationTypeToOpened,
+} from "../../../src/redux-features/extensionNavigation/extensionNavigationSlicer";
+import {useEffect} from "react";
 
 const ProfileLayout = ({children}) => {
 
     const dispatch = useDispatch();
     const {data:  session, status} = useSession()
-    const sideNavigationMediaQuery = useMediaQuery("768px", "close", "closePriority")
+    const NavAnimationOpenMediaQuery = useMediaQuery("766px", "close", "closeMobil")
+    const NavAnimationClosMediaQuery = useMediaQuery("766px", "open", "openMobil")
+
     const extensionNavigation = useSelector(state => state.extensionNavigation)
     useSetReduxSessionEffect(session,status)
 
-
     return(
         <div className={'flex flex-row justify-start max-w-screen-desktop mx-auto'}>
-            <div className={`absolute tablet:static`}>
+            <div className={``}>
                 <button onClick={() => {
                     dispatch(changeSideNavigationSelectedTypeOpposite())
                 }} data-drawer-target="sidebar-multi-level-sidebar"
                         data-drawer-toggle="sidebar-multi-level-sidebar"
                         aria-controls="sidebar-multi-level-sidebar" type="button"
-                        className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-skin-theme-font-50 rounded-lg tablet:hidden">
+                        className="inline-flex items-center p-2 mt-2 ml-3 text-sm text-skin-theme-font-50 rounded-lg absolute tablet:hidden">
                     <span className="sr-only">Open sidebar</span>
                     <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20"
                          xmlns="http://www.w3.org/2000/svg">
@@ -34,9 +40,9 @@ const ProfileLayout = ({children}) => {
                 </button>
 
                 <m.aside variants={animationStore.sideNavigationBar}
-                         animate={extensionNavigation.value.sideNavigationSelectedType.statusType === "hidden-menu" ? `${sideNavigationMediaQuery}` : "open"}
+                         animate={extensionNavigation.value.sideNavigationSelectedType.statusType === "hidden-menu" ? `${NavAnimationClosMediaQuery}` : `${NavAnimationOpenMediaQuery}`}
                          initial={'initial'} id="sidebar-multi-level-sidebar"
-                         className={`top-0 left-0 z-40 w-64 md-2 tablet:mt-0`}
+                         className={`absolute tablet:static top-28 left-0 z-40 w-64 md-2 tablet:mt-0`}
                          aria-label="Sidebar"
                 >
                     <div className="h-full px-3 py-4 overflow-y-auto bg-skin-theme-body-50">
@@ -44,7 +50,7 @@ const ProfileLayout = ({children}) => {
                             className="space-y-2">
                             <li
                             >
-                                <Link href="/profile"
+                                <Link href="/profile/dashboard"
                                       className="flex items-center w-full p-2 text-base font-normal text-skin-theme-font-50 transition duration-75 rounded-lg group hover:bg-skin-theme-body-100">
                                     <svg aria-hidden="true"
                                          className="w-6 h-6 text-skin-theme-400 transition duration-75 group-hover:text-skin-theme-font-50"
@@ -134,7 +140,7 @@ const ProfileLayout = ({children}) => {
             </div>
             <div onClick={() => {
                 dispatch(changeSideNavigationTypeToOpened())
-            }} className={'w-full px-4 mt-12 tablet:mt-4 h-[100vh]'}>
+            }} className={'truncate px-5 mt-12 tablet:mt-4 h-[100vh]'}>
                 {children}
             </div>
         </div>
