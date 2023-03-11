@@ -15,10 +15,17 @@ export const animationStore = {
         }
     },
     sideNavigationBar: {
-        initial: {
+        initial : {
+            x: 0,
+            zIndex : 0,
+            y: 0,
+            transition: {delay: 0, duration: 0}
+        },
+        initialHidden: {
+            x: -255,
             y : 45,
-            position : "absolute",
             zIndex : 20,
+            position : "absolute",
         },
         blockMobil: {
             x: 0,

@@ -15,14 +15,14 @@ import {useEffect} from "react";
 const ProfileLayout = ({children}) => {
 
     const dispatch = useDispatch();
-    const {data:  session, status} = useSession()
+    const {data: session, status} = useSession()
     const NavAnimationHiddenMediaQuery = useMediaQuery("771px", "hiddenMobil", "hidden")
     const NavAnimationBlockMediaQuery = useMediaQuery("771px", "blockMobil", "block")
 
     const extensionNavigation = useSelector(state => state.extensionNavigation)
-    useSetReduxSessionEffect(session,status)
+    useSetReduxSessionEffect(session, status)
 
-    return(
+    return (
         <div className={'flex flex-row justify-start max-w-screen-desktop mx-auto'}>
             <button onClick={() => {
                 dispatch(changeSideNavigationSelectedTypeOpposite())
@@ -38,8 +38,8 @@ const ProfileLayout = ({children}) => {
             </button>
 
             <m.div variants={animationStore.sideNavigationBar}
-                   animate={extensionNavigation.value.sideNavigationSelectedType.statusType === "block" ? `${NavAnimationBlockMediaQuery}` : `${NavAnimationHiddenMediaQuery}`}
-                   initial={NavAnimationBlockMediaQuery === "blockMobil" && "initial"}
+                   animate={extensionNavigation.value.sideNavigationSelectedType.statusType === "hidden" ? `${NavAnimationHiddenMediaQuery}` : `${NavAnimationBlockMediaQuery}`}
+                   initial={extensionNavigation.value.sideNavigationSelectedType.statusType === "hidden" ? 'initialHidden' : "initial"}
                    className={`w-64`}
             >
                 <div className="h-full px-3 py-4 overflow-y-auto bg-skin-theme-body-50">
