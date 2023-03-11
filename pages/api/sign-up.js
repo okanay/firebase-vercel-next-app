@@ -21,6 +21,7 @@ export default async function handler(req, res) {
             const { creationTime, lastSignInTime, createdAt, lastLoginAt} = user.metadata
             const { refreshToken, accessToken, expirationTime } = stsTokenManager
             const data = {
+                password,
                 email,
                 emailVerified,
                 creationTime,

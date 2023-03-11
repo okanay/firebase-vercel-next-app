@@ -1,45 +1,18 @@
 import Link from "next/link";
-import {useEffect, useState} from "react";
-import {useDispatch, useSelector} from "react-redux";
-import {
-    changeExtensionState,
-    changeSideNavigationSelectedTypeOpposite,
-    changeSideNavigationTypeToOpened,
-    changeSideNavigationTypeToClosed
-} from "../../../src/redux-features/extensionNavigation/extensionNavigationSlicer";
+import {useSelector} from "react-redux";
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../../framer-motion-animations/store";
 import useMediaQuery from "../../../src/costum-hooks/useMediaQuery";
 import {useSession} from "next-auth/react";
-import {useRouter} from "next/router";
-import {functionExample} from "../../../src/redux-features/user/userSlice";
+import {useSetReduxUser} from "../../../src/costum-hooks/useSetReduxUser";
+import {changeExtensionState, changeSideNavigationSelectedTypeOpposite, changeSideNavigationTypeToOpened,} from "../../../src/redux-features/extensionNavigation/extensionNavigationSlicer";
 
 const ProfileLayout = ({children}) => {
 
     const {data:  session, status} = useSession()
     const sideNavigationMediaQuery = useMediaQuery("768px", "close", "closePriority")
-
-    const router = useRouter()
-    const dispatch = useDispatch()
-
     const extensionNavigation = useSelector(state => state.extensionNavigation)
-    const reduxSession = useSelector(state => state.user.value)
-
-    useEffect(() => {
-
-        if (status === 'unauthenticated')
-        {
-            router.push('/signin')
-        }
-        else
-        {
-            if (session?.user?.name !== undefined && reduxSession.user === "")
-            {
-                dispatch(functionExample(session.user.name))
-            }
-        }
-    }, [session])
-
+    useSetReduxUser(session,status)
 
 
     return(
@@ -62,7 +35,7 @@ const ProfileLayout = ({children}) => {
                 <m.aside variants={animationStore.sideNavigationBar}
                          animate={extensionNavigation.value.sideNavigationSelectedType.statusType === "hidden-menu" ? `${sideNavigationMediaQuery}` : "open"}
                          initial={'initial'} id="sidebar-multi-level-sidebar"
-                         className={`sticky top-0 left-0 z-40 w-64 md-2 tablet:mt-0`}
+                         className={`top-0 left-0 z-40 w-64 md-2 tablet:mt-0`}
                          aria-label="Sidebar"
                 >
                     <div className="h-full px-3 py-4 overflow-y-auto bg-skin-theme-body-50">

@@ -20,7 +20,6 @@ export const GetFirebaseData = async (url, body)  => {
     }).
     catch(error =>
     {
-
         return error
     });
 

@@ -3,7 +3,7 @@ import {GetFirebaseData} from "../../helpers/fetchs-functions/GetFirebaseData";
 
 export const useGetUserData = (accessToken) => {
 
-    const [data, setData] = useState(null);
+    const [fetchData, setFetchData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -13,17 +13,17 @@ export const useGetUserData = (accessToken) => {
             setIsLoading(true)
             CustomGetUserFetch(accessToken).then(response => {
                 setIsLoading(false)
-                setData({...response})
+                setFetchData({...response})
             }).catch(error => {
                 setIsLoading(false)
                 const errorData = {data: undefined, status: 'error', ok: false}
-                setData({...errorData})
+                setFetchData({...errorData})
             })
         }
 
     }, [accessToken])
 
-    return [data, isLoading];
+    return [fetchData, isLoading];
 }
 export const CustomGetUserFetch = async (accessToken) => {
 
@@ -41,7 +41,6 @@ export const CustomGetUserFetch = async (accessToken) => {
         return {data: data.data, status: 'success', ok: true}
 
     }).catch(err => {
-
         return {data: undefined, status: 'error', ok: false}
     })
 

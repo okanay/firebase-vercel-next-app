@@ -1,5 +1,4 @@
 import {useSession} from "next-auth/react";
-import {useEffect} from "react";
 import {useRouter} from "next/router";
 
 export default function Home({}) {
@@ -9,5 +8,8 @@ export default function Home({}) {
     if (status === 'unauthenticated') { router.push('/signin') }
     
 
-    return (<div></div>)
+    return (
+        <>
+
+    </>)
 }
