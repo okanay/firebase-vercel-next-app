@@ -16,28 +16,32 @@ export const animationStore = {
     },
     sideNavigationBar: {
         initial: {
-            y : 45
+            y : 45,
+            position : "absolute",
+            zIndex : 20,
         },
         blockMobil: {
             x: 0,
-            z: 300,
+            zIndex : 20,
             y: 45,
             position : "absolute",
             transition: {delay: 0, duration: 0.25, ease: "linear"}
         },
         block: {
             x: 0,
-            z: 0,
+            zIndex : 0,
+            y: 0,
             transition: {delay: 0, duration: 0}
         },
         hidden: {
             x: 0,
-            z: 0,
+            zIndex : 0,
+            y : 0 ,
             transition: {delay: 0, duration: 0.2, ease: "linear"}
         },
         hiddenMobil: {
             x: -255,
-            z: 300,
+            zIndex : 20,
             y: 45,
             position : "absolute",
             transition: {delay: 0, duration: 0.2, ease: "linear"}

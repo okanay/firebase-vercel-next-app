@@ -16,15 +16,11 @@ const ProfileLayout = ({children}) => {
 
     const dispatch = useDispatch();
     const {data:  session, status} = useSession()
-    const NavAnimationOpenMediaQuery = useMediaQuery("771px", "hiddenMobil", "hidden")
-    const NavAnimationClosMediaQuery = useMediaQuery("771px", "blockMobil", "block")
+    const NavAnimationHiddenMediaQuery = useMediaQuery("771px", "hiddenMobil", "hidden")
+    const NavAnimationBlockMediaQuery = useMediaQuery("771px", "blockMobil", "block")
 
     const extensionNavigation = useSelector(state => state.extensionNavigation)
     useSetReduxSessionEffect(session,status)
-
-    console.log(extensionNavigation.value.sideNavigationSelectedType.statusType)
-    console.log(NavAnimationOpenMediaQuery)
-    console.log(NavAnimationClosMediaQuery)
 
     return(
         <div className={'flex flex-row justify-start max-w-screen-desktop mx-auto'}>
@@ -42,8 +38,8 @@ const ProfileLayout = ({children}) => {
             </button>
 
             <m.div variants={animationStore.sideNavigationBar}
-                   animate={extensionNavigation.value.sideNavigationSelectedType.statusType === "block" ? `${NavAnimationClosMediaQuery}` : `${NavAnimationOpenMediaQuery}`}
-                   initial={'initial'}
+                   animate={extensionNavigation.value.sideNavigationSelectedType.statusType === "block" ? `${NavAnimationBlockMediaQuery}` : `${NavAnimationHiddenMediaQuery}`}
+                   initial={NavAnimationBlockMediaQuery === "blockMobil" && "initial"}
                    className={`w-64`}
             >
                 <div className="h-full px-3 py-4 overflow-y-auto bg-skin-theme-body-50">
