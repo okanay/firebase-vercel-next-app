@@ -1,5 +1,4 @@
 import Navigation from "./navigation";
-import Head from "next/head";
 import Theme from "./theme";
 import {useRouter} from "next/router";
 import {useEffect, useState} from "react";

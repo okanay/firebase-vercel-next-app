@@ -12,12 +12,33 @@ import {animationStore} from "../../../framer-motion-animations/store";
 import useMediaQuery from "../../../src/costum-hooks/useMediaQuery";
 import {useSession} from "next-auth/react";
 import {useRouter} from "next/router";
+import {functionExample} from "../../../src/redux-features/user/userSlice";
 
 const ProfileLayout = ({children}) => {
 
-    const extensionNavigation = useSelector(state => state.extensionNavigation)
-    const dispatch = useDispatch()
+    const {data:  session, status} = useSession()
     const sideNavigationMediaQuery = useMediaQuery("768px", "close", "closePriority")
+
+    const router = useRouter()
+    const dispatch = useDispatch()
+
+    const extensionNavigation = useSelector(state => state.extensionNavigation)
+    const reduxSession = useSelector(state => state.user.value)
+
+    useEffect(() => {
+
+        if (status === 'unauthenticated')
+        {
+            router.push('/signin')
+        }
+        else
+        {
+            if (session?.user?.name !== undefined && reduxSession.user === "")
+            {
+                dispatch(functionExample(session.user.name))
+            }
+        }
+    }, [session])
 
 
 
