@@ -16,33 +16,31 @@ export const animationStore = {
     },
     sideNavigationBar: {
         initial: {
-            x: 0,
-            z : 0,
-            position: "static"
+            y : 45
         },
-        openMobil: {
+        blockMobil: {
             x: 0,
-            z : 0,
-            position: "static",
+            z: 300,
+            y: 45,
+            position : "absolute",
             transition: {delay: 0, duration: 0.25, ease: "linear"}
         },
-        open: {
+        block: {
             x: 0,
-            z : 40,
-            position: "absolute",
-            transition: {delay: 0, duration: 0.25, ease: "linear"}
+            z: 0,
+            transition: {delay: 0, duration: 0}
         },
-        close: {
-            x: -250,
-            z : -10,
-            position: "absolute",
+        hidden: {
+            x: 0,
+            z: 0,
             transition: {delay: 0, duration: 0.2, ease: "linear"}
         },
-        closeMobil: {
-            x: 0,
-            z : 0,
-            position: "static",
-            transition: {delay: 0, duration: 0, ease: "linear"}
+        hiddenMobil: {
+            x: -255,
+            z: 300,
+            y: 45,
+            position : "absolute",
+            transition: {delay: 0, duration: 0.2, ease: "linear"}
         }
     },
     staggerBase: {

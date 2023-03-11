@@ -23,7 +23,7 @@ module.exports = {
         'lgPhone': "425px",
         'xlPhone': "440px",
         'tablet': '768px',
-        'sideNav' : '955px',
+        'sideNav' : '640px',
         'laptop': '1024px',
         'desktop': '1440px',
       },

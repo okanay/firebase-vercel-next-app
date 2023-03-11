@@ -58,15 +58,3 @@ const ProfileIndex = () => {
 
 export default ProfileIndex
 
-
-// <p className={'truncate flex flex-row gap-2'}>accessToken : <span
-//     className={'text-skin-theme-600'}>{fetchData.data.data.accessToken ? "useable" : "not useable"}</span>
-// </p>
-// <p className={'truncate flex flex-row gap-2'}>refreshToken : <span
-//     className={'text-skin-theme-600'}>{fetchData.data.data.refreshToken ? "useable" : "not useable"}</span>
-// </p>
-// <div className={'whitespace-normal flex flex-row gap-2'}>password-hash : <span
-//     className={'whitespace-normal text-skin-theme-600'}>{fetchData.data.data.hashPassword}</span>
-// </div>
-// <p className={'truncate flex flex-row gap-2'}>id : <span
-//     className={'text-skin-theme-600'}>{fetchData.data.id}</span></p>
