@@ -1,7 +1,6 @@
-import {useRef, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 
 import Link from "next/link";
-import Head from "next/head";
 
 import InformationText from "../../components/ui/informationText";
 
@@ -10,16 +9,14 @@ import {animationStore} from "../../framer-motion-animations/store";
 import {signIn, signOut, useSession} from "next-auth/react";
 import {useRouter} from "next/router";
 import {SignInErrors} from "../../helpers/Errors/SignInErrors";
-
+import {SignInHead} from "../../src/head-components/sign-in-head";
 const SignIn = () => {
 
     const {data: session, status} = useSession()
 
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState({status: false, message: ""})
-
     const router = useRouter()
-
     const emailRef = useRef()
     const passwordRef = useRef()
     const handleSignInFormSubmit = async (event) => {
@@ -33,15 +30,18 @@ const SignIn = () => {
         await setLoading(false)
 
         if (result.ok) {
-
             router.push('/profile')
-
         } else {
-            console.log(result.error)
             setError({status: true, message: SignInErrors(result.error)})
         }
-
     }
+
+    useEffect(() => {
+        if (status === 'authenticated')
+        {
+            router.push('/profile')
+        }
+    })
 
     return (<m.div
         variants={animationStore.main}
@@ -49,10 +49,10 @@ const SignIn = () => {
         animate='animate'
         exit={'exit'}
         className={'px-4 pt-6 bg-skin-theme-body-50 py-10'}>
-        <Head>
-            <title>Sign In to Next Auth - Firebase Demo</title>
-            <meta name='description' content="Sign In to Next Auth - Firebase Demo"/>
-        </Head>
+
+        {/* >>>> src >>>> head-components >>>> sign-in-head*/}
+        <SignInHead/>
+
         {/* Information - and Sign In Form */}
         <div
             className={'grid grid-cols-12 grid-flow-col gap-4 bg-skin-theme-body-100/50 laptop:px-20 desktop:px-24 rounded-xl relative'}>

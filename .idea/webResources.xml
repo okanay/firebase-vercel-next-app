@@ -11,6 +11,7 @@
             <path value="file://$PROJECT_DIR$/pages" />
             <path value="file://$PROJECT_DIR$/src" />
             <path value="file://$PROJECT_DIR$/public" />
+            <path value="file://$PROJECT_DIR$/styles" />
           </resourceRoots>
         </entryData>
       </entry>

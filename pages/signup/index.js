@@ -6,6 +6,7 @@ import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
 import {SignUpErrors} from "../../helpers/Errors/SignUpErrors";
 import {useRouter} from "next/router";
+import {SignUpHead} from "../../src/head-components/sign-up-head";
 const SignUp = () => {
 
     const [loading, setLoading] = useState(false)
@@ -19,7 +20,7 @@ const SignUp = () => {
         event.preventDefault()
         const email = emailRef.current.value
         const password = passwordRef.current.value
-        const response = await fetch('/api/signup', {
+        const response = await fetch('/api/sign-up', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -60,13 +61,8 @@ const SignUp = () => {
         exit={'exit'}
         className={'px-4 pt-6 bg-skin-theme-body-50 py-10'}>
 
-        {/* Metadata Information, Headers*/}
-        <Head>
-            <title>Sign Up To Next Auth - Firebase Demo</title>
-            <meta name='description' content="Sign Up to Next Auth - Firebase Demo"/>
-        </Head>
-
-
+        {/* >>>> src >>>> head-components >>>> sign-up-head*/}
+        <SignUpHead/>
         {/* Information - and Sign In Form */}
         <div className={'grid grid-cols-12 grid-flow-col gap-4 bg-skin-theme-body-100/50 laptop:px-20 desktop:px-24 rounded-xl relative'}>
 

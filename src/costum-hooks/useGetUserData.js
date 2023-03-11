@@ -1,5 +1,5 @@
 import {useEffect, useState} from "react";
-import {GetFirebaseData} from "../Fetchs-Functions/GetFirebaseData";
+import {GetFirebaseData} from "../../helpers/Fetchs-Functions/GetFirebaseData";
 
 export const useGetUserData = async (session) => {
 
@@ -9,10 +9,11 @@ export const useGetUserData = async (session) => {
 
         if (session.accessToken !== undefined)
         {
-            CustomGetUserFetch(session).then(response => {
+            CustomGetUserFetch(session.accessToken).then(response => {
                 setUser({...response})
             }).catch(error => {
-                console.log(error)
+                const errorData = {data: undefined, status: 'error', ok: false}
+                setUser({...errorData})
             })
         }
 
@@ -20,10 +21,10 @@ export const useGetUserData = async (session) => {
 
     return user
 }
-export const CustomGetUserFetch = async (session) => {
+export const CustomGetUserFetch = async (accessToken) => {
 
-    const data = GetFirebaseData("/api/getUserWithAccessToken", {
-        accessToken : session.accessToken,
+    const data = GetFirebaseData("/api/get-user", {
+        accessToken,
         collectionName : "users",
         whereQuery: "accessToken"
     }).then(data => {

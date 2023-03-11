@@ -1,5 +1,5 @@
 import {useDispatch, useSelector} from "react-redux";
-import {changeThemeColorByAction, changeThemeModeByAction} from "../../../src/features/theme/themeSlice";
+import {changeThemeColorByAction, changeThemeModeByAction} from "../../../src/redux-features/theme/themeSlice";
 import Head from "next/head";
 import {useCookies} from "react-cookie";
 import {useEffect, useState} from "react";

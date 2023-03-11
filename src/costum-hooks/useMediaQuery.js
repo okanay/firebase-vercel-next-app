@@ -3,7 +3,6 @@ import {useEffect, useState} from "react";
 const useMediaQuery = (width,mainGroup, mediaGroup) => {
 
     const [framerMediaQuery, setFramerMediaQuery] = useState("close");
-
     useEffect(() => {
         function handleResize() {
             if (window.matchMedia(`(max-width: ${width})`).matches) {
@@ -13,16 +12,14 @@ const useMediaQuery = (width,mainGroup, mediaGroup) => {
             }
         }
 
-        handleResize(); // bileşen monte edildiğinde bir kez çalıştırın
+        handleResize();
 
-        window.addEventListener("resize", handleResize); // resize olayını dinle
+        window.addEventListener("resize", handleResize);
 
         return () => {
-            window.removeEventListener("resize", handleResize); // bileşen kaldırıldığında dinlemeyi durdur
+            window.removeEventListener("resize", handleResize);
         };
     }, []);
-
-
     return [framerMediaQuery]
 }
 

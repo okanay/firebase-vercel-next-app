@@ -6,7 +6,7 @@ import {
     changeSideNavigationSelectedTypeOpposite,
     changeSideNavigationTypeToOpened,
     changeSideNavigationTypeToClosed
-} from "../../../src/features/extensionNavigation/extensionNavigationSlicer";
+} from "../../../src/redux-features/extensionNavigation/extensionNavigationSlicer";
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../../framer-motion-animations/store";
 import useMediaQuery from "../../../src/costum-hooks/useMediaQuery";

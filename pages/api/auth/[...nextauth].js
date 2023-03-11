@@ -1,6 +1,6 @@
 import NextAuth from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials";
-import {SignWithEmailAndPasswordAndUpdateLoginData} from "../../../helpers/Fetchs-Functions/SignWithEmailAndPasswordAndUpdateLoginData";
+import {SignWithEmailAndPassword_Custom} from "../../../helpers/firebase-server-functions/SignWithEmailAndPassword_Custom";
 
 export const authOptions = {
     providers: [
@@ -8,7 +8,7 @@ export const authOptions = {
             name: "Credentials",
             async authorize(credentials, req) {
 
-                const response = await SignWithEmailAndPasswordAndUpdateLoginData(credentials.email, credentials.password)
+                const response = await SignWithEmailAndPassword_Custom(credentials.email, credentials.password)
 
                 if (response.email !== undefined) {
                     return response

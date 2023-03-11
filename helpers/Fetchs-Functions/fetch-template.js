@@ -1,5 +1,5 @@
 
-export const SignUpFetch = async (email, password)  => {
+export const FetchTemplate = async (email, password)  => {
 
     const FetchData = await fetch('/api/signup', {
         method: 'POST',

@@ -3,7 +3,7 @@ import {getSession} from "next-auth/react";
 
 import {motion as m} from "framer-motion";
 import {animationStore} from "../../framer-motion-animations/store";
-import {useGetUserData} from "../../helpers/costumHook/useGetUserWithAccessToken";
+import {useGetUserData} from "../../src/costum-hooks/useGetUserData";
 import {useState} from "react";
 
 const ProfileIndex = (props) => {

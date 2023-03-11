@@ -1,7 +1,7 @@
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {useCookies} from "react-cookie";
-import {changeThemeColorByAction, changeThemeModeByAction} from "../../../src/features/theme/themeSlice";
+import {changeThemeColorByAction, changeThemeModeByAction} from "../../../src/redux-features/theme/themeSlice";
 
 const Theme = ({children}) => {
 
