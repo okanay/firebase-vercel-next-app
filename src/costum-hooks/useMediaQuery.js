@@ -1,7 +1,10 @@
 import {useEffect, useState} from "react";
+import {useDispatch} from "react-redux";
+import {changeSideNavigationTypeToClosed} from "../redux-features/extensionNavigation/extensionNavigationSlicer";
 
 const useMediaQuery = (width,mainGroup, mediaGroup) => {
 
+    const dispatch = useDispatch();
     const [framerMediaQuery, setFramerMediaQuery] = useState("close");
     useEffect(() => {
         function handleResize() {
@@ -9,6 +12,7 @@ const useMediaQuery = (width,mainGroup, mediaGroup) => {
                 setFramerMediaQuery(mainGroup);
             } else {
                 setFramerMediaQuery(mediaGroup);
+                dispatch((changeSideNavigationTypeToClosed()))
             }
         }
 

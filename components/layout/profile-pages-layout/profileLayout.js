@@ -7,7 +7,6 @@ import {useSession} from "next-auth/react";
 import {useSetReduxSessionEffect} from "../../../src/costum-hooks/useSetReduxSessionEffect";
 import {
     changeSideNavigationSelectedTypeOpposite,
-    changeSideNavigationTypeToClosed,
     changeSideNavigationTypeToOpened,
 } from "../../../src/redux-features/extensionNavigation/extensionNavigationSlicer";
 import {useEffect} from "react";
