@@ -53,7 +53,6 @@ const SignIn = () => {
             <title>Sign In to Next Auth - Firebase Demo</title>
             <meta name='description' content="Sign In to Next Auth - Firebase Demo"/>
         </Head>
-
         {/* Information - and Sign In Form */}
         <div
             className={'grid grid-cols-12 grid-flow-col gap-4 bg-skin-theme-body-100/50 laptop:px-20 desktop:px-24 rounded-xl relative'}>

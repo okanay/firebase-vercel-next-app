@@ -29,12 +29,6 @@ const Navigation = () => {
     }
 
     return (<div className={'bg-skin-theme-body-50 px-4 py-2'}>
-        <Head>
-            <title>Sign Next Firebase</title>
-            <meta name='description' content="Sign In, Sign Us to Next Auth - Firebase Demo"/>
-        </Head>
-
-
         <div className={'flex flex-row flex-wrap justify-between w-full items-center'}>
 
 
@@ -53,7 +47,7 @@ const Navigation = () => {
                 ) : (
                     <div className={'flex flex-row gap-3 items-center text-xs basePhone:text-sm font-semibold'}>
                         <button onClick={() => {
-                            signOut({callbackUrl : "/signin"})
+                            signOut({callbackUrl: "/signin"})
                         }}
                                 className={'rounded px-4 py-2 bg-skin-theme-body-900 border border-skin-theme-body-50 text-skin-theme-font-900'}>Sign
                             Out

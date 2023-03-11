@@ -1,5 +1,5 @@
 import {signInWithEmailAndPassword} from "firebase/auth";
-import {auth, db} from "../../src/firebase";
+import {auth, db} from "../../src/firebase/firebase";
 import {doc, getDoc, updateDoc} from "firebase/firestore";
 export const SignWithEmailAndPasswordAndUpdateLoginData = async (email , password) => {
 

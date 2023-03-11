@@ -1,5 +1,5 @@
 import {doc, setDoc} from "firebase/firestore";
-import {auth, db} from "../../src/firebase";
+import {auth, db} from "../../src/firebase/firebase";
 import {createUserWithEmailAndPassword} from "firebase/auth";
 export default async function handler(req, res) {
 

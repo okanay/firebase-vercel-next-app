@@ -21,10 +21,6 @@ const ThemeSelect = () => {
     }
 
     return <div className={"bg-skin-theme-body-50"}>
-        <Head>
-            <title>Theme Selector</title>
-            <meta name='description' content="Theme Selector, For Next JS Firebase Example."/>
-        </Head>
         <div className={'flex flex-row justify-between'}>
             <div className={'pl-0.5'}>
                 {theme !== undefined && theme.themes.map(item => {

@@ -1,4 +1,4 @@
-import {db, auth} from "../../src/firebase";
+import {db, auth} from "../../src/firebase/firebase";
 
 
 export default async function handler(req, res) {

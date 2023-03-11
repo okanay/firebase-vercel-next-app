@@ -1,5 +1,5 @@
 import { collection, query, where, getDocs } from "firebase/firestore";
-import {db} from "../../src/firebase";
+import {db} from "../../src/firebase/firebase";
 export default async function handler(req, res) {
 
     const {accessToken, collectionName} = req.body
