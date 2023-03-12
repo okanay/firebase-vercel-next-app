@@ -39,7 +39,7 @@ const ProfileLayout = ({children}) => {
             <m.div variants={animationStore.sideNavigationBar}
                    animate={extensionNavigation.value.sideNavigationSelectedType.statusType === "hidden" ? `${NavAnimationHiddenMediaQuery}` : `${NavAnimationBlockMediaQuery}`}
                    initial={extensionNavigation.value.sideNavigationSelectedType.statusType === "hidden" ? 'initialHidden' : "initial"}
-                   className={`w-64`}
+                   className={`w-64 h-[100vh]`}
             >
                 <div className="h-full px-3 py-4 overflow-y-auto bg-skin-theme-body-50">
                     <ul
